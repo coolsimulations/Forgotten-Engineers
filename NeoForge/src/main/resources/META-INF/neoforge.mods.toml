@@ -1,0 +1,38 @@
+modLoader="javafml"
+issueTrackerURL="${mod_issues}"
+license="${mod_license}"
+
+[[mods]]
+    modId="${mod_id}"
+    version="${version}"
+    updateJSONURL="${mod_update_url}"
+    displayURL="${mod_homepage}"
+    logoFile="${mod_id}_logo.png"
+    logoBlur=false
+    displayName="${mod_name}"
+    credits="${mod_credit}"
+    description="${mod_desc}"
+
+[[mixins]]
+config="${mod_id}.common.mixins.json"
+
+[[accessTransformers]]
+file="META-INF/accesstransformer.cfg"
+
+[[dependencies.${mod_id}]]
+    modId="neoforge"
+    type="required"
+    versionRange="[${neoforge_version},)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    type="required"
+    versionRange="[${minecraft_version},)"
+    ordering="NONE"
+    side="BOTH"
+
+[modproperties.${mod_id}]
+    catalogueImageIcon="${mod_id}_catalogue_icon.png"
+    catalogueBackground="${mod_id}_catalogue_background.png"
+    configuredBackground="minecraft:textures/block/anvil.png"

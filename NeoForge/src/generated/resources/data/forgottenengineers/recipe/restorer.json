@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": "#c:leathers",
+    "A": "minecraft:anvil",
+    "B": "#minecraft:bundles",
+    "W": "forgottenengineers:restoration_wisdom"
+  },
+  "pattern": [
+    "#W#",
+    "#A#",
+    "#B#"
+  ],
+  "result": {
+    "id": "forgottenengineers:restorer"
+  }
+}

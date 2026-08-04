@@ -1,0 +1,8 @@
+accessWidener	v1	official
+accessible class net/minecraft/data/recipes/RecipeProvider$Runner
+accessible field net/minecraft/world/item/CreativeModeTabs INGREDIENTS Lnet/minecraft/resources/ResourceKey;
+accessible field net/minecraft/world/item/CreativeModeTabs TOOLS_AND_UTILITIES Lnet/minecraft/resources/ResourceKey;
+accessible method  net/minecraft/world/item/BundleItem playRemoveOneSound (Lnet/minecraft/world/entity/Entity;)V
+accessible method  net/minecraft/world/item/BundleItem playInsertSound (Lnet/minecraft/world/entity/Entity;)V
+accessible method  net/minecraft/world/item/BundleItem playDropContentsSound (Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/Entity;)V
+accessible method  net/minecraft/world/item/BundleItem playInsertFailSound (Lnet/minecraft/world/entity/Entity;)V

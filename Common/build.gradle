@@ -1,0 +1,28 @@
+plugins {
+    id 'idea'
+    id 'java'
+    id 'maven-publish'
+    id 'org.spongepowered.gradle.vanilla' version '0.3.2-SNAPSHOT'
+}
+base {
+    archivesName = "${mod_name}-Common-${minecraft_version}-${mod_version}".replace(' ', '-')
+}
+minecraft {
+    version(minecraft_version)
+    if(file("src/main/resources/${mod_id}.accesswidener").exists()){
+        accessWideners(file("src/main/resources/${mod_id}.accesswidener"))
+    }
+}
+
+dependencies {
+     compileOnly 'org.spongepowered:mixin:0.8.7'
+     implementation 'com.google.code.findbugs:jsr305:3.0.1'
+     implementation "com.github.houbb:opencc4j:$opencc4j"
+}
+
+processResources {
+    def buildProps = project.properties.clone()
+    filesMatching(['pack.mcmeta']) {
+        expand buildProps
+    }
+}

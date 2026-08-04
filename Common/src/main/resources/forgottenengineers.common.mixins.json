@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.coolsimulations.ForgottenEngineers.mixin",
+  "compatibilityLevel": "JAVA_18",
+  "refmap": "${mod_id}.refmap.json",
+  "mixins": [
+    "BundleItemMixin"
+  ],
+  "client": [
+    "AbstractContainerScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
+

@@ -1,0 +1,85 @@
+plugins {
+    id 'idea'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '[7.0.17,8)'
+}
+base {
+    archivesName = "${mod_name}-Forge-${minecraft_version}-${mod_version}".replace(' ', '-')
+    tasks.withType(AbstractTestTask).configureEach {
+        failOnNoDiscoveredTests = false
+    }
+}
+
+minecraft {
+    mappings channel: 'official', version: minecraft_version
+
+    // Automatically enable forge AccessTransformers if the file exists
+    // This location is hardcoded in Forge and can not be changed.
+    // https://github.com/MinecraftForge/MinecraftForge/blob/be1698bb1554f9c8fa2f58e32b9ab70bc4385e60/fmlloader/src/main/java/net/minecraftforge/fml/loading/moddiscovery/ModFile.java#L123
+    accessTransformer = true
+
+    runs {
+        configureEach {
+            workingDir = layout.projectDirectory.dir('run')
+            systemProperty 'eventbus.api.strictRuntimeChecks', 'true'
+            args "-mixin.config=${mod_id}.common.mixins.json"
+        }
+        register('client')
+
+        register('server') {
+            args '--nogui'
+        }
+
+        register('data') {
+            args '--mod', "${mod_id}", '--all', '--output', file('src/generated/resources/'), '--existing', project(":Common").file('src/main/resources/')
+            mods {
+                modServerRun {
+                    source sourceSets.main
+                    source project(":Common").sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+sourceSets.main.resources.srcDir 'src/generated/resources'
+
+repositories {
+    minecraft.mavenizer(it)
+    maven { url = uri(layout.projectDirectory.dir('../.gradle/mavenizer/repo')) }
+    maven fg.forgeMaven
+    maven fg.minecraftLibsMaven
+    mavenCentral()
+}
+
+dependencies {
+    implementation minecraft.dependency("net.minecraftforge:forge:${minecraft_version}-${forge_version}")
+    //annotationProcessor("org.spongepowered:mixin:0.8.7-SNAPSHOT:processor")
+    annotationProcessor("net.minecraftforge:eventbus-validator:7.0.1")
+    // Hack fix for now, force jopt-simple to be exactly 5.0.4 because Mojang ships that version, but some transitive dependencies request 6.0+
+    implementation('net.sf.jopt-simple:jopt-simple:5.0.4') { version { strictly '5.0.4' } }
+    implementation "com.github.houbb:opencc4j:$opencc4j"
+    compileOnly project(":Common")
+    testCompileOnly project(":Common")
+}
+
+tasks.withType(JavaCompile).configureEach {
+    source(project(":Common").sourceSets.main.allSource)
+}
+
+processResources {
+    from project(":Common").sourceSets.main.resources
+}
+
+tasks.named('jar', Jar) {
+    manifest {
+        //attributes['MixinConfigs'] = "${mod_id}.common.mixins.json, ${mod_id}.mixins.json"
+        attributes['MixinConfigs'] = "${mod_id}.common.mixins.json"
+    }
+}
+
+sourceSets.each {
+    def dir = layout.buildDirectory.dir("resources/$it.name")
+    it.output.resourcesDir = dir
+    it.java.destinationDirectory = dir
+}

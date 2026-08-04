@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": "#c:papers",
+    "A": "minecraft:anvil",
+    "W": "forgottenengineers:restoration_wisdom"
+  },
+  "pattern": [
+    "#A#",
+    "#W#",
+    "#A#"
+  ],
+  "result": {
+    "count": 2,
+    "id": "forgottenengineers:restoration_wisdom"
+  }
+}
