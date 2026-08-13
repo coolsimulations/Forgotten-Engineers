@@ -1,8 +1,10 @@
 package net.coolsimulations.ForgottenEngineers;
 
 import net.coolsimulations.ForgottenEngineers.data.ForgottenEngineersDataGeneration;
+import net.coolsimulations.ForgottenEngineers.event.FEEntityEvents;
 import net.coolsimulations.ForgottenEngineers.item.ForgottenEngineersItems;
 import net.coolsimulations.ForgottenEngineers.loot.ForgottenEngineersLootModifiers;
+import net.minecraft.util.TriState;
 import net.minecraft.world.item.CreativeModeTab;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -11,6 +13,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.event.entity.player.ItemEntityPickupEvent;
 
 @Mod(value = ForgottenEngineersCommon.MOD_ID)
 @EventBusSubscriber(modid = ForgottenEngineersCommon.MOD_ID)
@@ -36,5 +39,11 @@ public class ForgottenEngineers {
             if (event.getTabKey() == listing.tab())
                 event.insertAfter(listing.beforeItem().getDefaultInstance(), listing.item().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         });
+    }
+
+    @SubscribeEvent
+    public static void onPlayerPickUpItems(ItemEntityPickupEvent.Pre event) {
+        if (!FEEntityEvents.PLAYER_ITEM_ENTITY_PICKUP.post().handle(event.getPlayer(), event.getItemEntity()))
+            event.setCanPickup(TriState.FALSE);
     }
 }

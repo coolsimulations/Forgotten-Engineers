@@ -1,7 +1,18 @@
 {
+  "item.forgottenengineers.distribution_wisdom": "Dis all mine Brainz",
   "item.forgottenengineers.engineering_wisdom": "Big Brainz",
   "item.forgottenengineers.engineering_wisdom.discovers": "Makz dez:",
   "item.forgottenengineers.restoration_wisdom": "Fix dat Brainz",
   "item.forgottenengineers.restorer": "Fix dat",
-  "item.forgottenengineers.restorer.empty.description": "Kan hold a mikz stacc of fixin thingz :o"
+  "item.forgottenengineers.restorer.empty.description": "Kan hold a mikz stacc of fixin thingz :o",
+  "item.forgottenengineers.router": "Go in box",
+  "item.forgottenengineers.router.empty.description": "Kan hold a mikz stacc of filta thingz :o",
+  "subtitles.forgottenengineers.item.restorer.drop_contents": "Fix dat emptied naww catrzzz",
+  "subtitles.forgottenengineers.item.router.drop_contents": "Go in box emptied naww catrzzz",
+  "tag.item.c.papers": "Papyruses",
+  "tag.item.forgottenengineers.distribution_wisdom_discovers": "Dis all mine Brainz makz dez",
+  "tag.item.forgottenengineers.restoration_wisdom_discovers": "Fix dat Brainz makz dez",
+  "tag.item.forgottenengineers.restorer_ignore_materials": "Fix dat ignaws thingz",
+  "tag.item.forgottenengineers.restorer_ignore_tools": "Fix dat ignaws toolz",
+  "tag.item.forgottenengineers.router_ignore_items": "Go in box ignaws thingz"
 }

@@ -1,11 +1,14 @@
 package net.coolsimulations.ForgottenEngineers;
 
 import net.coolsimulations.ForgottenEngineers.data.ForgottenEngineersDataGeneration;
+import net.coolsimulations.ForgottenEngineers.event.FEEntityEvents;
 import net.coolsimulations.ForgottenEngineers.item.ForgottenEngineersItems;
 import net.coolsimulations.ForgottenEngineers.loot.ForgottenEngineersLootModifiers;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraftforge.common.util.Result;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.eventbus.api.bus.BusGroup;
 import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -38,5 +41,11 @@ public class ForgottenEngineers {
             if (event.getTabKey() == listing.tab())
                 event.getEntries().putAfter(listing.beforeItem().getDefaultInstance(), listing.item().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         });
+    }
+
+    @SubscribeEvent
+    public static void onPlayerPickUpItems(EntityItemPickupEvent event) {
+        if (!FEEntityEvents.PLAYER_ITEM_ENTITY_PICKUP.post().handle(event.getEntity(), event.getItem()))
+            event.setResult(Result.DENY);
     }
 }

@@ -1,7 +1,18 @@
 {
+  "item.forgottenengineers.distribution_wisdom": "Sabedoria de Classificação",
   "item.forgottenengineers.engineering_wisdom": "Sabedoria de Engenharia",
   "item.forgottenengineers.engineering_wisdom.discovers": "Descobertas:",
   "item.forgottenengineers.restoration_wisdom": "Sabedoria de Restauração",
   "item.forgottenengineers.restorer": "Restaurador",
-  "item.forgottenengineers.restorer.empty.description": "Pode carregar um conjunto diverso de materiais de reparo"
+  "item.forgottenengineers.restorer.empty.description": "Pode carregar um conjunto diverso de materiais de reparo",
+  "item.forgottenengineers.router": "Classificador",
+  "item.forgottenengineers.router.empty.description": "Pode carregar um conjunto diverso de itens filtrantes",
+  "subtitles.forgottenengineers.item.restorer.drop_contents": "Restaurador esvaziada",
+  "subtitles.forgottenengineers.item.router.drop_contents": "Classificador esvaziada",
+  "tag.item.c.papers": "Papéis",
+  "tag.item.forgottenengineers.distribution_wisdom_discovers": "Descobertas de Sabedoria da Classificação",
+  "tag.item.forgottenengineers.restoration_wisdom_discovers": "Descobertas de Sabedoria da Restauração",
+  "tag.item.forgottenengineers.restorer_ignore_materials": "Restaurador ignora materiais",
+  "tag.item.forgottenengineers.restorer_ignore_tools": "Restaurador ignora ferramentas",
+  "tag.item.forgottenengineers.router_ignore_items": "Classificador ignora itens"
 }

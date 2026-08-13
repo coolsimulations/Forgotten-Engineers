@@ -1,7 +1,18 @@
 {
+  "item.forgottenengineers.distribution_wisdom": "Weisheit der Sortierung",
   "item.forgottenengineers.engineering_wisdom": "Weisheit der Ingenieurkunst",
   "item.forgottenengineers.engineering_wisdom.discovers": "Entdeckungen:",
   "item.forgottenengineers.restoration_wisdom": "Weisheit der Restauration",
   "item.forgottenengineers.restorer": "Restaurator",
-  "item.forgottenengineers.restorer.empty.description": "Nimmt einen gemischten Stapel Reparaturmaterialien auf"
+  "item.forgottenengineers.restorer.empty.description": "Nimmt einen gemischten Stapel Reparaturmaterialien auf",
+  "item.forgottenengineers.router": "Sortierer",
+  "item.forgottenengineers.router.empty.description": "Nimmt einen gemischten Stapel Filtergegenstände auf",
+  "subtitles.forgottenengineers.item.restorer.drop_contents": "Restaurator entleert",
+  "subtitles.forgottenengineers.item.router.drop_contents": "Sortierer entleert",
+  "tag.item.c.papers": "Papiere",
+  "tag.item.forgottenengineers.distribution_wisdom_discovers": "Entdeckungen der Weisheit der Sortierung",
+  "tag.item.forgottenengineers.restoration_wisdom_discovers": "Entdeckungen der Weisheit der Restauration",
+  "tag.item.forgottenengineers.restorer_ignore_materials": "Restaurator ignoriert Materialien",
+  "tag.item.forgottenengineers.restorer_ignore_tools": "Restaurator ignoriert Werkzeuge",
+  "tag.item.forgottenengineers.router_ignore_items": "Sortierer ignoriert Gegenstände"
 }

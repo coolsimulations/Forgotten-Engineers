@@ -5,7 +5,7 @@
   "compatibilityLevel": "JAVA_18",
   "refmap": "${mod_id}.refmap.json",
   "mixins": [
-    "BundleItemMixin"
+    "BundleItemMixin", "BundleContentsMixin", "BundleFullnessMixin"
   ],
   "client": [
     "AbstractContainerScreenMixin"

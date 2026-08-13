@@ -19,6 +19,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.component.BundleContents;
 import net.minecraft.world.item.component.TooltipDisplay;
+import org.apache.commons.lang3.math.Fraction;
 import org.jetbrains.annotations.NotNull;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
@@ -43,13 +44,19 @@ public class RestorerItem extends BundleItem {
 
     @Override
     public int getBarColor(@NotNull ItemStack stack) {
-        return ARGB.color(255, 109, 176, 166);
+        BundleContents contents = stack.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY);
+        return getWeightSafe(contents).compareTo(Fraction.ONE) >= 0 ? ARGB.color(255, 199, 160, 106) : ARGB.color(255, 109, 176, 166);
+    }
+
+    @Override
+    public boolean canFitInsideContainerItems() {
+        return false;
     }
 
     @Override
     public @NonNull Optional<TooltipComponent> getTooltipImage(final ItemStack bundle) {
-        TooltipDisplay display = (TooltipDisplay)bundle.getOrDefault(DataComponents.TOOLTIP_DISPLAY, TooltipDisplay.DEFAULT);
-        return !display.shows(DataComponents.BUNDLE_CONTENTS) ? Optional.empty() : Optional.ofNullable((BundleContents)bundle.get(DataComponents.BUNDLE_CONTENTS)).map(RestorerTooltip::new);
+        TooltipDisplay display = bundle.getOrDefault(DataComponents.TOOLTIP_DISPLAY, TooltipDisplay.DEFAULT);
+        return !display.shows(DataComponents.BUNDLE_CONTENTS) ? Optional.empty() : Optional.ofNullable(bundle.get(DataComponents.BUNDLE_CONTENTS)).map(RestorerTooltip::new);
     }
 
     protected boolean checkStackIsRepairMaterialOrEmpty(ItemStack stack) {

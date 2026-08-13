@@ -1,7 +1,18 @@
 {
+  "item.forgottenengineers.distribution_wisdom": "분류의 예지",
   "item.forgottenengineers.engineering_wisdom": "공학의 예지",
   "item.forgottenengineers.engineering_wisdom.discovers": "발견한 아이템:",
   "item.forgottenengineers.restoration_wisdom": "수리의 예지",
   "item.forgottenengineers.restorer": "휴대용 수리기",
-  "item.forgottenengineers.restorer.empty.description": "여러 종류의 수리 재료를 섞어 한 묶음 보관할 수 있습니다"
+  "item.forgottenengineers.restorer.empty.description": "여러 종류의 수리 재료를 섞어 한 묶음 보관할 수 있습니다",
+  "item.forgottenengineers.router": "휴대용 분류기",
+  "item.forgottenengineers.router.empty.description": "여러 종류의 항목 필터를 섞어 한 묶음 보관할 수 있습니다",
+  "subtitles.forgottenengineers.item.restorer.drop_contents": "휴대용 수리기를 비움",
+  "subtitles.forgottenengineers.item.router.drop_contents": "휴대용 분류기를 비움",
+  "tag.item.c.papers": "종이들",
+  "tag.item.forgottenengineers.distribution_wisdom_discovers": "분류의 예지 발견",
+  "tag.item.forgottenengineers.restoration_wisdom_discovers": "수리의 예지 발견",
+  "tag.item.forgottenengineers.restorer_ignore_materials": "휴대용 수리기는 재료를 무시합니다",
+  "tag.item.forgottenengineers.restorer_ignore_tools": "휴대용 수리기는 도구를 무시합니다",
+  "tag.item.forgottenengineers.router_ignore_items": "휴대용 분류기는 품목을 무시합니다"
 }

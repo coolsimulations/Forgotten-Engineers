@@ -1,7 +1,18 @@
 {
+  "item.forgottenengineers.distribution_wisdom": "分拣之智",
   "item.forgottenengineers.engineering_wisdom": "工程之智",
   "item.forgottenengineers.engineering_wisdom.discovers": "已发现物品：",
   "item.forgottenengineers.restoration_wisdom": "修复之智",
   "item.forgottenengineers.restorer": "物品修复器",
-  "item.forgottenengineers.restorer.empty.description": "可容纳一组混合的维修材料"
+  "item.forgottenengineers.restorer.empty.description": "可容纳一组混合的维修材料",
+  "item.forgottenengineers.router": "便携分类器",
+  "item.forgottenengineers.router.empty.description": "可容纳一组混合的筛选物品",
+  "subtitles.forgottenengineers.item.restorer.drop_contents": "物品修复器：倒空",
+  "subtitles.forgottenengineers.item.router.drop_contents": "便携分类器：倒空",
+  "tag.item.c.papers": "纸",
+  "tag.item.forgottenengineers.distribution_wisdom_discovers": "分拣之智发现",
+  "tag.item.forgottenengineers.restoration_wisdom_discovers": "修复之智发现",
+  "tag.item.forgottenengineers.restorer_ignore_materials": "物品修复器忽略材料",
+  "tag.item.forgottenengineers.restorer_ignore_tools": "物品修复器忽略工具",
+  "tag.item.forgottenengineers.router_ignore_items": "便携分类器忽略物品"
 }

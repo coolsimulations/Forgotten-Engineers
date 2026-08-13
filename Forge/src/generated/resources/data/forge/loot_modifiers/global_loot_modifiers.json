@@ -1,7 +1,9 @@
 {
   "entries": [
     "forgottenengineers:restoration_wisdom_from_mineshaft",
-    "forgottenengineers:restoration_wisdom_from_village"
+    "forgottenengineers:distribution_wisdom_from_stronghold",
+    "forgottenengineers:restoration_wisdom_from_village",
+    "forgottenengineers:distribution_wisdom_from_end_city"
   ],
   "replace": false
 }

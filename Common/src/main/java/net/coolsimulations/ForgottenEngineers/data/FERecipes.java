@@ -20,6 +20,9 @@ public class FERecipes {
     public static void generateShapedRecipes(RecipeOutput output, HolderGetter<Item> items, Function<Item, Criterion<InventoryChangeTrigger.TriggerInstance>> has, TagKey<Item> leather) {
 
         ShapedRecipeBuilder.shaped(items, RecipeCategory.MISC, FEItems.RESTORER).pattern("#W#").pattern("#A#").pattern("#B#").define('W', FEItems.RESTORATION_WISDOM).define('#', leather).define('A', Items.ANVIL).define('B', ItemTags.BUNDLES).unlockedBy("has_" + ForgottenEngineersItems.RESTORATION_WISDOM_ID.getPath(), has.apply(FEItems.RESTORATION_WISDOM)).save(output);
+        ShapedRecipeBuilder.shaped(items, RecipeCategory.MISC, FEItems.ROUTER).pattern("#W#").pattern("#H#").pattern("#B#").define('W', FEItems.DISTRIBUTION_WISDOM).define('#', leather).define('H', Items.HOPPER).define('B', ItemTags.BUNDLES).unlockedBy("has_" + ForgottenEngineersItems.DISTRIBUTION_WISDOM_ID.getPath(), has.apply(FEItems.DISTRIBUTION_WISDOM)).save(output);
+
         ShapedRecipeBuilder.shaped(items, RecipeCategory.MISC, FEItems.RESTORATION_WISDOM, 2).pattern("#A#").pattern("#W#").pattern("#A#").define('W', FEItems.RESTORATION_WISDOM).define('#', FETags.PAPERS).define('A', Items.ANVIL).unlockedBy("has_" + ForgottenEngineersItems.RESTORATION_WISDOM_ID.getPath(), has.apply(FEItems.RESTORATION_WISDOM)).save(output);
+        ShapedRecipeBuilder.shaped(items, RecipeCategory.MISC, FEItems.DISTRIBUTION_WISDOM, 2).pattern("#H#").pattern("#W#").pattern("#H#").define('W', FEItems.DISTRIBUTION_WISDOM).define('#', FETags.PAPERS).define('H', Items.HOPPER).unlockedBy("has_" + ForgottenEngineersItems.DISTRIBUTION_WISDOM_ID.getPath(), has.apply(FEItems.DISTRIBUTION_WISDOM)).save(output);
     }
 }

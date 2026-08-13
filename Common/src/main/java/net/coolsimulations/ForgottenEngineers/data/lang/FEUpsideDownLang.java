@@ -2,6 +2,8 @@ package net.coolsimulations.ForgottenEngineers.data.lang;
 
 import it.unimi.dsi.fastutil.chars.Char2CharMap;
 import it.unimi.dsi.fastutil.chars.Char2CharOpenHashMap;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import org.apache.commons.lang3.StringUtils;
 
@@ -84,6 +86,14 @@ public class FEUpsideDownLang {
 
     public static void generateItems(BiConsumer<Item, String> items) {
         FEEnglishLang.generateItems((item, translation) -> items.accept(item, convertToUpsideDown(translation)));
+    }
+
+    public static void generateItemTags(BiConsumer<TagKey<Item>, String> tags) {
+        FEEnglishLang.generateItemTags((tag, translation) -> tags.accept(tag, convertToUpsideDown(translation)));
+    }
+
+    public static void generateSounds(BiConsumer<SoundEvent, String> sounds) {
+        FEEnglishLang.generateSounds((sound, translation) -> sounds.accept(sound, convertToUpsideDown(translation)));
     }
 
     public static void generateCustom(BiConsumer<String, String> custom) {

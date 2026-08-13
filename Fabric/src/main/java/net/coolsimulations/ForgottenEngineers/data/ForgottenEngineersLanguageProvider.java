@@ -20,6 +20,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         public void generateTranslations(HolderLookup.@NonNull Provider registryLookup, TranslationBuilder builder) {
             FEEnglishLang.generateItems(builder::add);
+            FEEnglishLang.generateItemTags(builder::add);
+            FEEnglishLang.generateSounds(builder::add);
             FEEnglishLang.generateCustom(builder::add);
         }
     }
@@ -34,6 +36,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         public void generateTranslations(HolderLookup.@NonNull Provider registryLookup, TranslationBuilder builder) {
             FEUpsideDownLang.generateItems(builder::add);
+            FEUpsideDownLang.generateItemTags(builder::add);
+            FEUpsideDownLang.generateSounds(builder::add);
             FEUpsideDownLang.generateCustom(builder::add);
         }
     }
@@ -47,6 +51,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         public void generateTranslations(HolderLookup.@NonNull Provider registryLookup, TranslationBuilder builder) {
             FEShakespeareanLang.generateItems(builder::add);
+            FEShakespeareanLang.generateItemTags(builder::add);
+            FEShakespeareanLang.generateSounds(builder::add);
             FEShakespeareanLang.generateCustom(builder::add);
         }
     }
@@ -60,6 +66,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         public void generateTranslations(HolderLookup.@NonNull Provider registryLookup, TranslationBuilder builder) {
             FEPirateLang.generateItems(builder::add);
+            FEPirateLang.generateItemTags(builder::add);
+            FEPirateLang.generateSounds(builder::add);
             FEPirateLang.generateCustom(builder::add);
         }
     }
@@ -73,6 +81,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         public void generateTranslations(HolderLookup.@NonNull Provider registryLookup, TranslationBuilder builder) {
             FELOLCatLang.generateItems(builder::add);
+            FELOLCatLang.generateItemTags(builder::add);
+            FELOLCatLang.generateSounds(builder::add);
             FELOLCatLang.generateCustom(builder::add);
         }
     }
@@ -86,6 +96,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         public void generateTranslations(HolderLookup.@NonNull Provider registryLookup, TranslationBuilder builder) {
             FESpanishLang.generateItems(builder::add);
+            FESpanishLang.generateItemTags(builder::add);
+            FESpanishLang.generateSounds(builder::add);
             FESpanishLang.generateCustom(builder::add);
         }
     }
@@ -99,6 +111,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         public void generateTranslations(HolderLookup.@NonNull Provider registryLookup, TranslationBuilder builder) {
             FEJapaneseLang.generateItems(builder::add);
+            FEJapaneseLang.generateItemTags(builder::add);
+            FEJapaneseLang.generateSounds(builder::add);
             FEJapaneseLang.generateCustom(builder::add);
         }
     }
@@ -112,6 +126,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         public void generateTranslations(HolderLookup.@NonNull Provider registryLookup, TranslationBuilder builder) {
             FERussianLang.generateItems(builder::add);
+            FERussianLang.generateItemTags(builder::add);
+            FERussianLang.generateSounds(builder::add);
             FERussianLang.generateCustom(builder::add);
         }
     }
@@ -125,6 +141,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         public void generateTranslations(HolderLookup.@NonNull Provider registryLookup, TranslationBuilder builder) {
             FEChineseLang.generateItems(builder::add);
+            FEChineseLang.generateItemTags(builder::add);
+            FEChineseLang.generateSounds(builder::add);
             FEChineseLang.generateCustom(builder::add);
         }
     }
@@ -138,6 +156,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         public void generateTranslations(HolderLookup.@NonNull Provider registryLookup, @NonNull TranslationBuilder builder) {
             FEChineseLang.generateItems((item, translation) -> builder.add(item, convertToTraditional(translation)));
+            FEChineseLang.generateItemTags((tag, translation) -> builder.add(tag, convertToTraditional(translation)));
+            FEChineseLang.generateSounds((sound, translation) -> builder.add(sound, convertToTraditional(translation)));
             FEChineseLang.generateCustom((custom, translation) -> builder.add(custom, convertToTraditional(translation)));
         }
 
@@ -157,6 +177,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         public void generateTranslations(HolderLookup.@NonNull Provider registryLookup, TranslationBuilder builder) {
             FEKoreanLang.generateItems(builder::add);
+            FEKoreanLang.generateItemTags(builder::add);
+            FEKoreanLang.generateSounds(builder::add);
             FEKoreanLang.generateCustom(builder::add);
         }
     }
@@ -170,6 +192,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         public void generateTranslations(HolderLookup.@NonNull Provider registryLookup, TranslationBuilder builder) {
             FEGermanLang.generateItems(builder::add);
+            FEGermanLang.generateItemTags(builder::add);
+            FEGermanLang.generateSounds(builder::add);
             FEGermanLang.generateCustom(builder::add);
         }
     }
@@ -183,6 +207,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         public void generateTranslations(HolderLookup.@NonNull Provider registryLookup, TranslationBuilder builder) {
             FEFrenchLang.generateItems(builder::add);
+            FEFrenchLang.generateItemTags(builder::add);
+            FEFrenchLang.generateSounds(builder::add);
             FEFrenchLang.generateCustom(builder::add);
         }
     }
@@ -196,6 +222,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         public void generateTranslations(HolderLookup.@NonNull Provider registryLookup, TranslationBuilder builder) {
             FEPortugueseLang.generateItems(builder::add);
+            FEPortugueseLang.generateItemTags(builder::add);
+            FEPortugueseLang.generateSounds(builder::add);
             FEPortugueseLang.generateCustom(builder::add);
         }
     }

@@ -2,6 +2,7 @@ package net.coolsimulations.ForgottenEngineers.client;
 
 import net.coolsimulations.ForgottenEngineers.event.FERenderEvents;
 import net.coolsimulations.ForgottenEngineers.item.tooltip.RestorerTooltip;
+import net.coolsimulations.ForgottenEngineers.item.tooltip.RouterTooltip;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ItemSlotMouseAction;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
@@ -20,9 +21,11 @@ public class FEClientEvents {
 
     public static void registerTooltipComponent(BiConsumer<Class<? extends TooltipComponent>, Function<TooltipComponent, ClientTooltipComponent>> register) {
         register.accept(RestorerTooltip.class, tooltip -> new ClientRestorerTooltip(((RestorerTooltip) tooltip).contents()));
+        register.accept(RouterTooltip.class, tooltip -> new ClientRouterTooltip(((RouterTooltip) tooltip).contents()));
     }
 
     public static void registerAction(Consumer<ItemSlotMouseAction> register) {
         register.accept(new RestorerMouseActions(Minecraft.getInstance()));
+        register.accept(new RouterMouseActions(Minecraft.getInstance()));
     }
 }

@@ -9,6 +9,8 @@ public class FEModels {
 
     public static void generateFlatItems(Consumer<Item> flat) {
         flat.accept(FEItems.RESTORATION_WISDOM);
+        flat.accept(FEItems.DISTRIBUTION_WISDOM);
         flat.accept(FEItems.RESTORER);
+        flat.accept(FEItems.ROUTER);
     }
 }

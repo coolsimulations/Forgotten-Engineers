@@ -1,7 +1,18 @@
 {
+  "item.forgottenengineers.distribution_wisdom": "Share of the Booty Savvy",
   "item.forgottenengineers.engineering_wisdom": "Tinkerin' Savvy",
   "item.forgottenengineers.engineering_wisdom.discovers": "Unearths:",
   "item.forgottenengineers.restoration_wisdom": "Renewal Savvy",
   "item.forgottenengineers.restorer": "Patch-Kit",
-  "item.forgottenengineers.restorer.empty.description": "Holds mixed amounts o' repair materials"
+  "item.forgottenengineers.restorer.empty.description": "Holds mixed amounts o' repair materials",
+  "item.forgottenengineers.router": "Divvying Rod",
+  "item.forgottenengineers.router.empty.description": "Holds mixed amounts o' sortin' plunder",
+  "subtitles.forgottenengineers.item.restorer.drop_contents": "Patch-Kit be emptied",
+  "subtitles.forgottenengineers.item.router.drop_contents": "Divvying Rod be emptied",
+  "tag.item.c.papers": "Parchments",
+  "tag.item.forgottenengineers.distribution_wisdom_discovers": "Share of the Booty Savvy Unearths",
+  "tag.item.forgottenengineers.restoration_wisdom_discovers": "Renewal Savvy Unearths",
+  "tag.item.forgottenengineers.restorer_ignore_materials": "Patch-Kit Ignore Materials",
+  "tag.item.forgottenengineers.restorer_ignore_tools": "Patch-Kit Ignore Tools",
+  "tag.item.forgottenengineers.router_ignore_items": "Divvying Rod Ignore Plunder"
 }

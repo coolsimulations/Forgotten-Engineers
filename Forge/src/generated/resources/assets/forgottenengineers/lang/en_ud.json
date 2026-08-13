@@ -1,7 +1,18 @@
 {
+  "item.forgottenengineers.distribution_wisdom": "ɯopsᴉM uoᴉʇnqᴉɹʇsᴉᗡ",
   "item.forgottenengineers.engineering_wisdom": "ɯopsᴉM ᵷuᴉɹǝǝuᴉᵷuƎ",
   "item.forgottenengineers.engineering_wisdom.discovers": ":sɹǝʌoɔsᴉᗡ",
   "item.forgottenengineers.restoration_wisdom": "ɯopsᴉM uoᴉʇɐɹoʇsǝᴚ",
   "item.forgottenengineers.restorer": "ɹǝɹoʇsǝᴚ",
-  "item.forgottenengineers.restorer.empty.description": "sꞁɐᴉɹǝʇɐɯ ɹᴉɐdǝɹ ɟo ʞɔɐʇs pǝxᴉɯ ɐ pꞁoɥ uɐƆ"
+  "item.forgottenengineers.restorer.empty.description": "sꞁɐᴉɹǝʇɐɯ ɹᴉɐdǝɹ ɟo ʞɔɐʇs pǝxᴉɯ ɐ pꞁoɥ uɐƆ",
+  "item.forgottenengineers.router": "ɹǝʇnoᴚ",
+  "item.forgottenengineers.router.empty.description": "sɯǝʇᴉ ɹǝʇꞁᴉɟ ɟo ʞɔɐʇs pǝxᴉɯ ɐ pꞁoɥ uɐƆ",
+  "subtitles.forgottenengineers.item.restorer.drop_contents": "sǝᴉʇdɯǝ ɹǝɹoʇsǝᴚ",
+  "subtitles.forgottenengineers.item.router.drop_contents": "sǝᴉʇdɯǝ ɹǝʇnoᴚ",
+  "tag.item.c.papers": "sɹǝdɐԀ",
+  "tag.item.forgottenengineers.distribution_wisdom_discovers": "sɹǝʌoɔsᴉᗡ ɯopsᴉM uoᴉʇnqᴉɹʇsᴉᗡ",
+  "tag.item.forgottenengineers.restoration_wisdom_discovers": "sɹǝʌoɔsᴉᗡ ɯopsᴉM uoᴉʇɐɹoʇsǝᴚ",
+  "tag.item.forgottenengineers.restorer_ignore_materials": "sꞁɐᴉɹǝʇɐW ǝɹouᵷI ɹǝɹoʇsǝᴚ",
+  "tag.item.forgottenengineers.restorer_ignore_tools": "sꞁoo⟘ ǝɹouᵷI ɹǝɹoʇsǝᴚ",
+  "tag.item.forgottenengineers.router_ignore_items": "sɯǝʇI ǝɹouᵷI ɹǝʇnoᴚ"
 }

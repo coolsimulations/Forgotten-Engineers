@@ -1,7 +1,18 @@
 {
+  "item.forgottenengineers.distribution_wisdom": "Мудрость распределения",
   "item.forgottenengineers.engineering_wisdom": "Мудрость инженера",
   "item.forgottenengineers.engineering_wisdom.discovers": "Открытия:",
   "item.forgottenengineers.restoration_wisdom": "Мудрость восстановления",
   "item.forgottenengineers.restorer": "Реставратор",
-  "item.forgottenengineers.restorer.empty.description": "Вмещает стопку разных материалов для ремонта"
+  "item.forgottenengineers.restorer.empty.description": "Вмещает стопку разных материалов для ремонта",
+  "item.forgottenengineers.router": "Сортировщик",
+  "item.forgottenengineers.router.empty.description": "Вмещает стопку разных фильтрующих предметов",
+  "subtitles.forgottenengineers.item.restorer.drop_contents": "Реставратор опустошён",
+  "subtitles.forgottenengineers.item.router.drop_contents": "Сортировщик опустошён",
+  "tag.item.c.papers": "Бумаги",
+  "tag.item.forgottenengineers.distribution_wisdom_discovers": "Открытия мудрость распределения",
+  "tag.item.forgottenengineers.restoration_wisdom_discovers": "Открытия мудрость восстановления",
+  "tag.item.forgottenengineers.restorer_ignore_materials": "Реставратор игнорирует материалы",
+  "tag.item.forgottenengineers.restorer_ignore_tools": "Реставратор игнорирует инструменты",
+  "tag.item.forgottenengineers.router_ignore_items": "Сортировщик игнорирует предметы"
 }

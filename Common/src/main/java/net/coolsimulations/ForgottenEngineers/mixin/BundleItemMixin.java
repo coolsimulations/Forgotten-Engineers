@@ -1,6 +1,7 @@
 package net.coolsimulations.ForgottenEngineers.mixin;
 
 import net.coolsimulations.ForgottenEngineers.item.RestorerItem;
+import net.coolsimulations.ForgottenEngineers.item.RouterItem;
 import net.coolsimulations.ForgottenEngineers.sounds.FESounds;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
@@ -21,6 +22,8 @@ public class BundleItemMixin {
     private void replaceOtherRemoveOneSound(Entity entity) {
         if (((BundleItem) (Object)this) instanceof RestorerItem)
             entity.playSound(FESounds.RESTORER_REMOVE_ONE, 0.8F, 0.8F + entity.level().getRandom().nextFloat() * 0.4F);
+        if (((BundleItem) (Object)this) instanceof RouterItem)
+            RouterItem.playRemoveOneSound(entity);
         playRemoveOneSound(entity);
     }
 
@@ -28,6 +31,8 @@ public class BundleItemMixin {
     private void replaceOnMeRemoveOneSound(Entity entity) {
         if (((BundleItem) (Object)this) instanceof RestorerItem)
             entity.playSound(FESounds.RESTORER_REMOVE_ONE, 0.8F, 0.8F + entity.level().getRandom().nextFloat() * 0.4F);
+        if (((BundleItem) (Object)this) instanceof RouterItem)
+            RouterItem.playRemoveOneSound(entity);
         playRemoveOneSound(entity);
     }
 
@@ -35,6 +40,8 @@ public class BundleItemMixin {
     private void replaceOtherInsertSound(Entity entity) {
         if (((BundleItem) (Object)this) instanceof RestorerItem)
             entity.playSound(FESounds.RESTORER_INSERT, 0.8F, 0.8F + entity.level().getRandom().nextFloat() * 0.4F);
+        if (((BundleItem) (Object)this) instanceof RouterItem)
+            RouterItem.playInsertSound(entity);
         playInsertSound(entity);
     }
 
@@ -42,6 +49,8 @@ public class BundleItemMixin {
     private void replaceOnMeInsertSound(Entity entity) {
         if (((BundleItem) (Object)this) instanceof RestorerItem)
             entity.playSound(FESounds.RESTORER_INSERT, 0.8F, 0.8F + entity.level().getRandom().nextFloat() * 0.4F);
+        if (((BundleItem) (Object)this) instanceof RouterItem)
+            RouterItem.playInsertSound(entity);
         playInsertSound(entity);
     }
 
@@ -49,6 +58,8 @@ public class BundleItemMixin {
     private void replaceDropContentsSound(Level level, Entity entity) {
         if (((BundleItem) (Object)this) instanceof RestorerItem)
             level.playSound(null, entity.blockPosition(), FESounds.RESTORER_DROP_CONTENTS, SoundSource.PLAYERS, 0.8F, 0.8F + entity.level().getRandom().nextFloat() * 0.4F);
+        if (((BundleItem) (Object)this) instanceof RouterItem)
+            level.playSound(null, entity.blockPosition(), FESounds.ROUTER_DROP_CONTENTS, SoundSource.PLAYERS, 0.8F, 0.8F + entity.level().getRandom().nextFloat() * 0.4F);
         playDropContentsSound(level, entity);
     }
 }

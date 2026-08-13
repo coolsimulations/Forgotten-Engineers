@@ -1,7 +1,18 @@
 {
+  "item.forgottenengineers.distribution_wisdom": "仕分けの叡智",
   "item.forgottenengineers.engineering_wisdom": "工学 叡智",
   "item.forgottenengineers.engineering_wisdom.discovers": "発見：",
   "item.forgottenengineers.restoration_wisdom": "修復の叡智",
   "item.forgottenengineers.restorer": "物品修復器",
-  "item.forgottenengineers.restorer.empty.description": "複数種類の修理材料を1スタック分まで一緒にしまうことができます"
+  "item.forgottenengineers.restorer.empty.description": "複数種類の修理材料を1スタック分まで一緒にしまうことができます",
+  "item.forgottenengineers.router": "携帯仕分け器",
+  "item.forgottenengineers.router.empty.description": "複数種類の絞り込むアイテムを1スタック分まで一緒にしまうことができます",
+  "subtitles.forgottenengineers.item.restorer.drop_contents": "物品修復器が空になる",
+  "subtitles.forgottenengineers.item.router.drop_contents": "携帯仕分け器が空になる",
+  "tag.item.c.papers": "紙",
+  "tag.item.forgottenengineers.distribution_wisdom_discovers": "仕分け 叡智の発見",
+  "tag.item.forgottenengineers.restoration_wisdom_discovers": "修復 叡智の発見",
+  "tag.item.forgottenengineers.restorer_ignore_materials": "物品修復器 は材料を無視します",
+  "tag.item.forgottenengineers.restorer_ignore_tools": "物品修復器 は工具を無視します",
+  "tag.item.forgottenengineers.router_ignore_items": "携帯仕分け器 はアイテムを無視します"
 }

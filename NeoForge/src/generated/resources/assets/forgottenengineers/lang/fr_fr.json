@@ -1,7 +1,18 @@
 {
+  "item.forgottenengineers.distribution_wisdom": "Sagesse du Tri",
   "item.forgottenengineers.engineering_wisdom": "Sagesse de l'Ingénierie",
   "item.forgottenengineers.engineering_wisdom.discovers": "Découvertes:",
   "item.forgottenengineers.restoration_wisdom": "Sagesse de la Restauration",
   "item.forgottenengineers.restorer": "Restaurateur",
-  "item.forgottenengineers.restorer.empty.description": "Peut contenir une pile de différents matériaux de réparation"
+  "item.forgottenengineers.restorer.empty.description": "Peut contenir une pile de différents matériaux de réparation",
+  "item.forgottenengineers.router": "Trieur",
+  "item.forgottenengineers.router.empty.description": "Peut contenir une pile de différents objets de filtre",
+  "subtitles.forgottenengineers.item.restorer.drop_contents": "Restaurateur vidé",
+  "subtitles.forgottenengineers.item.router.drop_contents": "Trieur vidé",
+  "tag.item.c.papers": "Papiers",
+  "tag.item.forgottenengineers.distribution_wisdom_discovers": "Découvertes de la Sagesse du Tri",
+  "tag.item.forgottenengineers.restoration_wisdom_discovers": "Découvertes de la Sagesse de la Restauration",
+  "tag.item.forgottenengineers.restorer_ignore_materials": "Restaurateur ignore les matériaux",
+  "tag.item.forgottenengineers.restorer_ignore_tools": "Restaurateur ignore les outils",
+  "tag.item.forgottenengineers.router_ignore_items": "Trieur ignore les objets"
 }

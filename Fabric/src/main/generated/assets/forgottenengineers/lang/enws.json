@@ -1,7 +1,18 @@
 {
+  "item.forgottenengineers.distribution_wisdom": "Lore of Allotment",
   "item.forgottenengineers.engineering_wisdom": "Engine-Artistry",
   "item.forgottenengineers.engineering_wisdom.discovers": "Discovers:",
   "item.forgottenengineers.restoration_wisdom": "Lore of Renewal",
   "item.forgottenengineers.restorer": "Restorer",
-  "item.forgottenengineers.restorer.empty.description": "Canst bear a mingled heap of repair wares"
+  "item.forgottenengineers.restorer.empty.description": "Canst bear a mingled heap of repair wares",
+  "item.forgottenengineers.router": "Allotter",
+  "item.forgottenengineers.router.empty.description": "Canst bear a mingled heap of sifting wares",
+  "subtitles.forgottenengineers.item.restorer.drop_contents": "Restorer empties",
+  "subtitles.forgottenengineers.item.router.drop_contents": "Allotter empties",
+  "tag.item.c.papers": "Papers",
+  "tag.item.forgottenengineers.distribution_wisdom_discovers": "Lore of Allotment Discovers",
+  "tag.item.forgottenengineers.restoration_wisdom_discovers": "Lore of Renewal Discovers",
+  "tag.item.forgottenengineers.restorer_ignore_materials": "Restorer Ignore Wares",
+  "tag.item.forgottenengineers.restorer_ignore_tools": "Restorer Ignore Tools",
+  "tag.item.forgottenengineers.router_ignore_items": "Allotter Ignore Wares"
 }

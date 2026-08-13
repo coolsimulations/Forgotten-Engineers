@@ -4,6 +4,7 @@ import com.github.houbb.opencc4j.util.ZhTwConverterUtil;
 import net.coolsimulations.ForgottenEngineers.ForgottenEngineersCommon;
 import net.coolsimulations.ForgottenEngineers.data.lang.*;
 import net.minecraft.data.PackOutput;
+import net.minecraft.sounds.SoundEvent;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
 public class ForgottenEngineersLanguageProvider {
@@ -16,6 +17,10 @@ public class ForgottenEngineersLanguageProvider {
 
         @Override
         protected void addTranslations() {}
+
+        protected void add(SoundEvent sound, String value) {
+            this.add("subtitles." + sound.location().getNamespace() + "." + sound.location().getPath(), value);
+        }
     }
 
     public static class EnglishProvider extends ForgottenEngineersLangProvider {
@@ -27,6 +32,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         protected void addTranslations() {
             FEEnglishLang.generateItems(this::add);
+            FEEnglishLang.generateItemTags(this::add);
+            FEEnglishLang.generateSounds(this::add);
             FEEnglishLang.generateCustom(this::add);
         }
     }
@@ -41,6 +48,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         protected void addTranslations() {
             FEUpsideDownLang.generateItems(this::add);
+            FEUpsideDownLang.generateItemTags(this::add);
+            FEUpsideDownLang.generateSounds(this::add);
             FEUpsideDownLang.generateCustom(this::add);
         }
     }
@@ -54,6 +63,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         protected void addTranslations() {
             FEShakespeareanLang.generateItems(this::add);
+            FEShakespeareanLang.generateItemTags(this::add);
+            FEShakespeareanLang.generateSounds(this::add);
             FEShakespeareanLang.generateCustom(this::add);
         }
     }
@@ -67,6 +78,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         protected void addTranslations() {
             FEPirateLang.generateItems(this::add);
+            FEPirateLang.generateItemTags(this::add);
+            FEPirateLang.generateSounds(this::add);
             FEPirateLang.generateCustom(this::add);
         }
     }
@@ -80,6 +93,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         protected void addTranslations() {
             FELOLCatLang.generateItems(this::add);
+            FELOLCatLang.generateItemTags(this::add);
+            FELOLCatLang.generateSounds(this::add);
             FELOLCatLang.generateCustom(this::add);
         }
     }
@@ -93,6 +108,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         protected void addTranslations() {
             FESpanishLang.generateItems(this::add);
+            FESpanishLang.generateItemTags(this::add);
+            FESpanishLang.generateSounds(this::add);
             FESpanishLang.generateCustom(this::add);
         }
     }
@@ -106,6 +123,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         protected void addTranslations() {
             FEJapaneseLang.generateItems(this::add);
+            FEJapaneseLang.generateItemTags(this::add);
+            FEJapaneseLang.generateSounds(this::add);
             FEJapaneseLang.generateCustom(this::add);
         }
     }
@@ -119,6 +138,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         protected void addTranslations() {
             FERussianLang.generateItems(this::add);
+            FERussianLang.generateItemTags(this::add);
+            FERussianLang.generateSounds(this::add);
             FERussianLang.generateCustom(this::add);
         }
     }
@@ -132,6 +153,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         protected void addTranslations() {
             FEChineseLang.generateItems(this::add);
+            FEChineseLang.generateItemTags(this::add);
+            FEChineseLang.generateSounds(this::add);
             FEChineseLang.generateCustom(this::add);
         }
     }
@@ -145,6 +168,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         protected void addTranslations() {
             FEChineseLang.generateItems((item, translation) -> this.add(item, convertToTraditional(translation)));
+            FEChineseLang.generateItemTags((tag, translation) -> this.add(tag, convertToTraditional(translation)));
+            FEChineseLang.generateSounds((sound, translation) -> this.add(sound, convertToTraditional(translation)));
             FEChineseLang.generateCustom((custom, translation) -> this.add(custom, convertToTraditional(translation)));
         }
 
@@ -164,6 +189,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         protected void addTranslations() {
             FEKoreanLang.generateItems(this::add);
+            FEKoreanLang.generateItemTags(this::add);
+            FEKoreanLang.generateSounds(this::add);
             FEKoreanLang.generateCustom(this::add);
         }
     }
@@ -177,6 +204,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         protected void addTranslations() {
             FEGermanLang.generateItems(this::add);
+            FEGermanLang.generateItemTags(this::add);
+            FEGermanLang.generateSounds(this::add);
             FEGermanLang.generateCustom(this::add);
         }
     }
@@ -190,6 +219,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         protected void addTranslations() {
             FEFrenchLang.generateItems(this::add);
+            FEFrenchLang.generateItemTags(this::add);
+            FEFrenchLang.generateSounds(this::add);
             FEFrenchLang.generateCustom(this::add);
         }
     }
@@ -203,6 +234,8 @@ public class ForgottenEngineersLanguageProvider {
         @Override
         protected void addTranslations() {
             FEPortugueseLang.generateItems(this::add);
+            FEPortugueseLang.generateItemTags(this::add);
+            FEPortugueseLang.generateSounds(this::add);
             FEPortugueseLang.generateCustom(this::add);
         }
     }

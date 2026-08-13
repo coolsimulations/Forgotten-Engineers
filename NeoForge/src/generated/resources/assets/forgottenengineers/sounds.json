@@ -5,7 +5,7 @@
       "forgottenengineers:item/restorer/drop_contents2",
       "forgottenengineers:item/restorer/drop_contents3"
     ],
-    "subtitle": "subtitles.item.restorer.drop_contents"
+    "subtitle": "subtitles.forgottenengineers.item.restorer.drop_contents"
   },
   "item.restorer.insert": {
     "sounds": [
@@ -20,6 +20,30 @@
       "forgottenengineers:item/restorer/remove_one1",
       "forgottenengineers:item/restorer/remove_one2",
       "forgottenengineers:item/restorer/remove_one3"
+    ],
+    "subtitle": "subtitles.item.bundle.remove_one"
+  },
+  "item.router.drop_contents": {
+    "sounds": [
+      "forgottenengineers:item/router/drop_contents1",
+      "forgottenengineers:item/router/drop_contents2",
+      "forgottenengineers:item/router/drop_contents3"
+    ],
+    "subtitle": "subtitles.forgottenengineers.item.router.drop_contents"
+  },
+  "item.router.insert": {
+    "sounds": [
+      "forgottenengineers:item/router/insert1",
+      "forgottenengineers:item/router/insert2",
+      "forgottenengineers:item/router/insert3"
+    ],
+    "subtitle": "subtitles.item.bundle.insert"
+  },
+  "item.router.remove_one": {
+    "sounds": [
+      "forgottenengineers:item/router/remove_one1",
+      "forgottenengineers:item/router/remove_one2",
+      "forgottenengineers:item/router/remove_one3"
     ],
     "subtitle": "subtitles.item.bundle.remove_one"
   }

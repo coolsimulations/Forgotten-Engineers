@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": "#c:leathers",
+    "B": "#minecraft:bundles",
+    "H": "minecraft:hopper",
+    "W": "forgottenengineers:distribution_wisdom"
+  },
+  "pattern": [
+    "#W#",
+    "#H#",
+    "#B#"
+  ],
+  "result": {
+    "id": "forgottenengineers:router"
+  }
+}

@@ -1,7 +1,18 @@
 {
+  "item.forgottenengineers.distribution_wisdom": "Distribution Wisdom",
   "item.forgottenengineers.engineering_wisdom": "Engineering Wisdom",
   "item.forgottenengineers.engineering_wisdom.discovers": "Discovers:",
   "item.forgottenengineers.restoration_wisdom": "Restoration Wisdom",
   "item.forgottenengineers.restorer": "Restorer",
-  "item.forgottenengineers.restorer.empty.description": "Can hold a mixed stack of repair materials"
+  "item.forgottenengineers.restorer.empty.description": "Can hold a mixed stack of repair materials",
+  "item.forgottenengineers.router": "Router",
+  "item.forgottenengineers.router.empty.description": "Can hold a mixed stack of filter items",
+  "subtitles.forgottenengineers.item.restorer.drop_contents": "Restorer empties",
+  "subtitles.forgottenengineers.item.router.drop_contents": "Router empties",
+  "tag.item.c.papers": "Papers",
+  "tag.item.forgottenengineers.distribution_wisdom_discovers": "Distribution Wisdom Discovers",
+  "tag.item.forgottenengineers.restoration_wisdom_discovers": "Restoration Wisdom Discovers",
+  "tag.item.forgottenengineers.restorer_ignore_materials": "Restorer Ignore Materials",
+  "tag.item.forgottenengineers.restorer_ignore_tools": "Restorer Ignore Tools",
+  "tag.item.forgottenengineers.router_ignore_items": "Router Ignore Items"
 }
