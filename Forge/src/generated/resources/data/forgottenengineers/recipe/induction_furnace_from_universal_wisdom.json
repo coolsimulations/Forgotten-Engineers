@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "induction_furnace",
+  "key": {
+    "#": "#c:leathers",
+    "B": "#minecraft:bundles",
+    "F": "minecraft:blast_furnace",
+    "W": "forgottenengineers:universal_wisdom"
+  },
+  "pattern": [
+    "#W#",
+    "#F#",
+    "#B#"
+  ],
+  "result": {
+    "id": "forgottenengineers:induction_furnace"
+  }
+}

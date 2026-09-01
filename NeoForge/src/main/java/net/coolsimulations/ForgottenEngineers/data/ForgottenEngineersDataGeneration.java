@@ -2,16 +2,24 @@ package net.coolsimulations.ForgottenEngineers.data;
 
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
+import java.util.List;
+
 public class ForgottenEngineersDataGeneration {
 
     public static void gatherData(GatherDataEvent.Client event) {
         event.createProvider(ForgottenEngineersModelProvider.ItemModels::new);
         event.createProvider(ForgottenEngineersSoundProvider::new);
         event.createProvider(ForgottenEngineersItemTagProvider::new);
+        event.createProvider(ForgottenEngineersBlockTagProvider::new);
         event.createProvider(ForgottenEngineersRecipeProvider::new);
         event.createProvider(ForgottenEngineersGlobalLootModifierProvider::new);
+        event.createProvider(output -> new ForgottenEngineersAdvancementProvider(output, event.getLookupProvider(), List.of(new ForgottenEngineersAdvancementProvider.AdvancementGenerator())));
 
         event.createProvider(ForgottenEngineersLanguageProvider.EnglishProvider::new);
+        event.createProvider(output -> new ForgottenEngineersLanguageProvider.EnglishCommonwealthProvider(output, "en_au"));
+        event.createProvider(output -> new ForgottenEngineersLanguageProvider.EnglishCommonwealthProvider(output, "en_ca"));
+        event.createProvider(output -> new ForgottenEngineersLanguageProvider.EnglishCommonwealthProvider(output, "en_gb"));
+        event.createProvider(output -> new ForgottenEngineersLanguageProvider.EnglishCommonwealthProvider(output, "en_nz"));
         event.createProvider(ForgottenEngineersLanguageProvider.UpsideDownProvider::new);
         event.createProvider(ForgottenEngineersLanguageProvider.ShakespeareanProvider::new);
         event.createProvider(ForgottenEngineersLanguageProvider.PirateProvider::new);
@@ -31,5 +39,6 @@ public class ForgottenEngineersDataGeneration {
         event.createProvider(ForgottenEngineersLanguageProvider.GermanProvider::new);
         event.createProvider(ForgottenEngineersLanguageProvider.FrenchProvider::new);
         event.createProvider(ForgottenEngineersLanguageProvider.PortugueseBrazilProvider::new);
+        event.createProvider(ForgottenEngineersLanguageProvider.ItalianProvider::new);
     }
 }

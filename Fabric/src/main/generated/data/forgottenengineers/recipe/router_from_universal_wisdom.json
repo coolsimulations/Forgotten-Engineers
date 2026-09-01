@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "router",
+  "key": {
+    "#": "#c:leathers",
+    "B": "#minecraft:bundles",
+    "H": "minecraft:hopper",
+    "W": "forgottenengineers:universal_wisdom"
+  },
+  "pattern": [
+    "#W#",
+    "#H#",
+    "#B#"
+  ],
+  "result": {
+    "id": "forgottenengineers:router"
+  }
+}

@@ -1,6 +1,7 @@
 package net.coolsimulations.ForgottenEngineers.item;
 
 import com.mojang.serialization.DataResult;
+import net.coolsimulations.ForgottenEngineers.ForgottenEngineersCommon;
 import net.coolsimulations.ForgottenEngineers.data.FETags;
 import net.coolsimulations.ForgottenEngineers.item.tooltip.RouterTooltip;
 import net.coolsimulations.ForgottenEngineers.sounds.FESounds;
@@ -21,7 +22,6 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.BundleContents;
 import net.minecraft.world.item.component.ItemContainerContents;
 import net.minecraft.world.item.component.TooltipDisplay;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -192,13 +192,13 @@ public class RouterItem extends BundleItem {
             return 0;
         } else {
             int maxAmount = isShulker ? 1 : contents.getMaxAmountToAdd(itemWeight.getOrThrow());
-            return (BundleContents.canItemBeInBundle(other) || isShulker) && !hasFilterItemAlready(other.getItem(), contents.items) && !other.is(FETags.ROUTER_IGNORE_ITEMS) ? tryInsert(contents, slot.safeTake(1, maxAmount, player)) : 0;
+            return (BundleContents.canItemBeInBundle(other) || isShulker) && !ForgottenEngineersCommon.hasFilterItemAlready(other.getItem(), contents.items) && !other.is(FETags.ROUTER_IGNORE_ITEMS) ? tryInsert(contents, slot.safeTake(1, maxAmount, player)) : 0;
         }
     }
 
     public int tryInsert(BundleContents.Mutable contents, ItemStack itemsToAdd) {
         boolean isShulker = isShulker(itemsToAdd);
-        if ((!BundleContents.canItemBeInBundle(itemsToAdd) && !isShulker) || hasFilterItemAlready(itemsToAdd.getItem(), contents.items) || itemsToAdd.is(FETags.ROUTER_IGNORE_ITEMS)) {
+        if ((!BundleContents.canItemBeInBundle(itemsToAdd) && !isShulker) || ForgottenEngineersCommon.hasFilterItemAlready(itemsToAdd.getItem(), contents.items) || itemsToAdd.is(FETags.ROUTER_IGNORE_ITEMS)) {
             return 0;
         } else {
             if (isShulker && hasShulkerBox(contents.items)) {
@@ -352,10 +352,6 @@ public class RouterItem extends BundleItem {
         return target.getCount() <= target.getMaxStackSize() && ItemStack.isSameItemSameComponents(target, stack);
     }
 
-    public static boolean matchesFilter(ItemStack filter, ItemStack stack) {
-        return ItemStack.isSameItem(filter, stack);
-    }
-
     public static boolean isShulker(ItemStack item) {
         BlockState state = Block.byItem(item.getItem()).defaultBlockState();
         return item.is(ItemTags.SHULKER_BOXES) || state.is(BlockTags.SHULKER_BOXES) || item.is(FETags.createCommonItemTag("shulker_boxes")) || state.is(FETags.createCommonBlockTag("shulker_boxes"));
@@ -398,14 +394,9 @@ public class RouterItem extends BundleItem {
         return items.stream().filter(item -> !isShulker(convertFromItemInstance(item))).toList();
     }
 
-    public static boolean hasFilterItemAlready(ItemLike itemToAdd, List<ItemStack> items) {
-        if (items.isEmpty()) return false;
-        return items.stream().anyMatch(item -> item != null && item.is(itemToAdd.asItem()));
-    }
-
     public static ItemStack convertFromItemInstance(ItemInstance item) {
         return item instanceof ItemStack ? (ItemStack) item : ((ItemStackTemplate)item).create();
     }
 
-    public record Result(ItemStack router, ItemStack stack) {}
+    public record Result(ItemStack device, ItemStack stack) {}
 }

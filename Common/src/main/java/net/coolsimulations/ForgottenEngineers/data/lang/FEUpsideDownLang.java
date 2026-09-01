@@ -5,6 +5,7 @@ import it.unimi.dsi.fastutil.chars.Char2CharOpenHashMap;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.function.BiConsumer;
@@ -90,6 +91,10 @@ public class FEUpsideDownLang {
 
     public static void generateItemTags(BiConsumer<TagKey<Item>, String> tags) {
         FEEnglishLang.generateItemTags((tag, translation) -> tags.accept(tag, convertToUpsideDown(translation)));
+    }
+
+    public static void generateBlockTags(BiConsumer<TagKey<Block>, String> tags) {
+        FEEnglishLang.generateBlockTags((tag, translation) -> tags.accept(tag, convertToUpsideDown(translation)));
     }
 
     public static void generateSounds(BiConsumer<SoundEvent, String> sounds) {

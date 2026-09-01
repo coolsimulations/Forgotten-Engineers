@@ -21,5 +21,8 @@ public class ForgottenEngineersModelProvider extends FabricModelProvider {
     @Override
     public void generateItemModels(@NonNull ItemModelGenerators itemModelGenerators) {
         FEModels.generateFlatItems(flat -> itemModelGenerators.generateFlatItem(flat, ModelTemplates.FLAT_ITEM));
+        FEModels.generateHandheldItems(handheld -> itemModelGenerators.generateFlatItem(handheld, FEModels.FLAT_HANDHELD_HANDLE_ITEM));
+        FEModels.generateInductionFurnace(itemModelGenerators);
+        FEModels.generateCombustor(itemModelGenerators);
     }
 }

@@ -10,9 +10,15 @@ public class ForgottenEngineersDataGeneration implements DataGeneratorEntrypoint
         FabricDataGenerator.Pack pack = generator.createPack();
         pack.addProvider(ForgottenEngineersModelProvider::new);
         pack.addProvider(ForgottenEngineersItemTagProvider::new);
+        pack.addProvider(ForgottenEngineersBlockTagProvider::new);
         pack.addProvider(ForgottenEngineersRecipeProvider::new);
+        pack.addProvider(ForgottenEngineersAdvancementProvider::new);
 
         pack.addProvider(ForgottenEngineersLanguageProvider.EnglishProvider::new);
+        pack.addProvider((output, registriesFuture) -> new ForgottenEngineersLanguageProvider.EnglishCommonwealthProvider(output, "en_au", registriesFuture));
+        pack.addProvider((output, registriesFuture) -> new ForgottenEngineersLanguageProvider.EnglishCommonwealthProvider(output, "en_ca", registriesFuture));
+        pack.addProvider((output, registriesFuture) -> new ForgottenEngineersLanguageProvider.EnglishCommonwealthProvider(output, "en_gb", registriesFuture));
+        pack.addProvider((output, registriesFuture) -> new ForgottenEngineersLanguageProvider.EnglishCommonwealthProvider(output, "en_nz", registriesFuture));
         pack.addProvider(ForgottenEngineersLanguageProvider.UpsideDownProvider::new);
         pack.addProvider(ForgottenEngineersLanguageProvider.ShakespeareanProvider::new);
         pack.addProvider(ForgottenEngineersLanguageProvider.PirateProvider::new);
@@ -32,5 +38,6 @@ public class ForgottenEngineersDataGeneration implements DataGeneratorEntrypoint
         pack.addProvider(ForgottenEngineersLanguageProvider.GermanProvider::new);
         pack.addProvider(ForgottenEngineersLanguageProvider.FrenchProvider::new);
         pack.addProvider(ForgottenEngineersLanguageProvider.PortugueseBrazilProvider::new);
+        pack.addProvider(ForgottenEngineersLanguageProvider.ItalianProvider::new);
     }
 }

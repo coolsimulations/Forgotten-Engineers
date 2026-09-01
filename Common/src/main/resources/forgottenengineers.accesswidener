@@ -31,3 +31,10 @@ accessible method net/minecraft/client/gui/screens/inventory/tooltip/ClientBundl
 accessible method net/minecraft/client/gui/screens/inventory/tooltip/ClientBundleTooltip itemGridHeight ()I
 accessible method net/minecraft/client/gui/screens/inventory/tooltip/ClientBundleTooltip getProgressBarFill (Lorg/apache/commons/lang3/math/Fraction;)I
 accessible method net/minecraft/client/gui/screens/inventory/tooltip/ClientBundleTooltip getProgressBarFillText (Lorg/apache/commons/lang3/math/Fraction;)Lnet/minecraft/network/chat/Component;
+accessible field net/minecraft/world/item/crafting/ShapelessRecipe result Lnet/minecraft/world/item/ItemStackTemplate;
+accessible field net/minecraft/world/item/crafting/ShapelessRecipe ingredients Ljava/util/List;
+accessible field net/minecraft/world/item/crafting/ShapedRecipe result Lnet/minecraft/world/item/ItemStackTemplate;
+accessible method net/minecraft/world/item/crafting/SingleItemRecipe result ()Lnet/minecraft/world/item/ItemStackTemplate;
+accessible method net/minecraft/client/data/models/ItemModelGenerators generateBooleanDispatch (Lnet/minecraft/world/item/Item;Lnet/minecraft/client/renderer/item/properties/conditional/ConditionalItemModelProperty;Lnet/minecraft/client/renderer/item/ItemModel$Unbaked;Lnet/minecraft/client/renderer/item/ItemModel$Unbaked;)V
+accessible field net/minecraft/client/data/models/ItemModelGenerators modelOutput Ljava/util/function/BiConsumer;
+accessible method net/minecraft/world/level/block/entity/AbstractFurnaceBlockEntity createExperience (Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/phys/Vec3;IF)V

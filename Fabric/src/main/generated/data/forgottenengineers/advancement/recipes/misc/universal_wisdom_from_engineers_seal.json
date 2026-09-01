@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_engineers_seal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "forgottenengineers:engineers_seal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "forgottenengineers:universal_wisdom_from_engineers_seal"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_engineers_seal"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "forgottenengineers:universal_wisdom_from_engineers_seal"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "forgottenengineers:add_item",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/ancient_city"
+    }
+  ],
+  "item": "forgottenengineers:engineers_seal",
+  "weight": 2
+}

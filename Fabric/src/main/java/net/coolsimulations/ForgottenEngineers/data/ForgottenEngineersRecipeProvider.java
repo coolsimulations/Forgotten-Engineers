@@ -24,7 +24,8 @@ public class ForgottenEngineersRecipeProvider extends FabricRecipeProvider {
             @Override
             public void buildRecipes() {
                 HolderLookup.RegistryLookup<Item> items = registries.lookupOrThrow(Registries.ITEM);
-                FERecipes.generateShapedRecipes(output, items, this::has, ConventionalItemTags.LEATHERS);
+                FERecipes.generateItemRecipes(output, items, this::has, ConventionalItemTags.LEATHERS, ConventionalItemTags.GLASS_BLOCKS_CHEAP, ConventionalItemTags.ENDER_CHESTS, ConventionalItemTags.BLAZE_RODS, ConventionalItemTags.COPPER_INGOTS, ConventionalItemTags.IRON_INGOTS);
+                FERecipes.generateTagRecipes(output, items, this::has);
             }
         };
     }

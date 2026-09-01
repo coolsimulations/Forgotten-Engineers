@@ -1,4 +1,116 @@
 {
+  "item.combustor.drop_contents": {
+    "sounds": [
+      "forgottenengineers:item/combustor/drop_contents1",
+      "forgottenengineers:item/combustor/drop_contents2",
+      "forgottenengineers:item/combustor/drop_contents3"
+    ],
+    "subtitle": "subtitles.forgottenengineers.item.combustor.drop_contents"
+  },
+  "item.combustor.remove_one": {
+    "sounds": [
+      "forgottenengineers:item/combustor/remove_one1",
+      "forgottenengineers:item/combustor/remove_one2",
+      "forgottenengineers:item/combustor/remove_one3"
+    ],
+    "subtitle": "subtitles.item.bundle.remove_one"
+  },
+  "item.compressor.drop_contents": {
+    "sounds": [
+      "forgottenengineers:item/compressor/drop_contents1",
+      "forgottenengineers:item/compressor/drop_contents2",
+      "forgottenengineers:item/compressor/drop_contents3"
+    ],
+    "subtitle": "subtitles.forgottenengineers.item.compressor.drop_contents"
+  },
+  "item.compressor.insert": {
+    "sounds": [
+      "forgottenengineers:item/compressor/insert1",
+      "forgottenengineers:item/compressor/insert2",
+      "forgottenengineers:item/compressor/insert3"
+    ],
+    "subtitle": "subtitles.item.bundle.insert"
+  },
+  "item.compressor.remove_one": {
+    "sounds": [
+      "forgottenengineers:item/compressor/remove_one1",
+      "forgottenengineers:item/compressor/remove_one2",
+      "forgottenengineers:item/compressor/remove_one3"
+    ],
+    "subtitle": "subtitles.item.bundle.remove_one"
+  },
+  "item.fuel_carrier.drop_contents": {
+    "sounds": [
+      "forgottenengineers:item/fuel_carrier/drop_contents1",
+      "forgottenengineers:item/fuel_carrier/drop_contents2",
+      "forgottenengineers:item/fuel_carrier/drop_contents3"
+    ],
+    "subtitle": "subtitles.forgottenengineers.item.fuel_carrier.drop_contents"
+  },
+  "item.fuel_carrier.insert": {
+    "sounds": [
+      "forgottenengineers:item/fuel_carrier/insert1",
+      "forgottenengineers:item/fuel_carrier/insert2",
+      "forgottenengineers:item/fuel_carrier/insert3"
+    ],
+    "subtitle": "subtitles.item.bundle.insert"
+  },
+  "item.fuel_carrier.remove_one": {
+    "sounds": [
+      "forgottenengineers:item/fuel_carrier/remove_one1",
+      "forgottenengineers:item/fuel_carrier/remove_one2",
+      "forgottenengineers:item/fuel_carrier/remove_one3"
+    ],
+    "subtitle": "subtitles.item.bundle.remove_one"
+  },
+  "item.induction_furnace.drop_contents": {
+    "sounds": [
+      "forgottenengineers:item/induction_furnace/drop_contents1",
+      "forgottenengineers:item/induction_furnace/drop_contents2",
+      "forgottenengineers:item/induction_furnace/drop_contents3"
+    ],
+    "subtitle": "subtitles.forgottenengineers.item.induction_furnace.drop_contents"
+  },
+  "item.induction_furnace.insert": {
+    "sounds": [
+      "forgottenengineers:item/induction_furnace/insert1",
+      "forgottenengineers:item/induction_furnace/insert2",
+      "forgottenengineers:item/induction_furnace/insert3"
+    ],
+    "subtitle": "subtitles.item.bundle.insert"
+  },
+  "item.induction_furnace.remove_one": {
+    "sounds": [
+      "forgottenengineers:item/induction_furnace/remove_one1",
+      "forgottenengineers:item/induction_furnace/remove_one2",
+      "forgottenengineers:item/induction_furnace/remove_one3"
+    ],
+    "subtitle": "subtitles.item.bundle.remove_one"
+  },
+  "item.mender.drop_contents": {
+    "sounds": [
+      "forgottenengineers:item/mender/drop_contents1",
+      "forgottenengineers:item/mender/drop_contents2",
+      "forgottenengineers:item/mender/drop_contents3"
+    ],
+    "subtitle": "subtitles.forgottenengineers.item.mender.drop_contents"
+  },
+  "item.mender.insert": {
+    "sounds": [
+      "forgottenengineers:item/mender/insert1",
+      "forgottenengineers:item/mender/insert2",
+      "forgottenengineers:item/mender/insert3"
+    ],
+    "subtitle": "subtitles.item.bundle.insert"
+  },
+  "item.mender.remove_one": {
+    "sounds": [
+      "forgottenengineers:item/mender/remove_one1",
+      "forgottenengineers:item/mender/remove_one2",
+      "forgottenengineers:item/mender/remove_one3"
+    ],
+    "subtitle": "subtitles.item.bundle.remove_one"
+  },
   "item.restorer.drop_contents": {
     "sounds": [
       "forgottenengineers:item/restorer/drop_contents1",
@@ -44,6 +156,30 @@
       "forgottenengineers:item/router/remove_one1",
       "forgottenengineers:item/router/remove_one2",
       "forgottenengineers:item/router/remove_one3"
+    ],
+    "subtitle": "subtitles.item.bundle.remove_one"
+  },
+  "item.stripper.drop_contents": {
+    "sounds": [
+      "forgottenengineers:item/stripper/drop_contents1",
+      "forgottenengineers:item/stripper/drop_contents2",
+      "forgottenengineers:item/stripper/drop_contents3"
+    ],
+    "subtitle": "subtitles.forgottenengineers.item.stripper.drop_contents"
+  },
+  "item.stripper.insert": {
+    "sounds": [
+      "forgottenengineers:item/stripper/insert1",
+      "forgottenengineers:item/stripper/insert2",
+      "forgottenengineers:item/stripper/insert3"
+    ],
+    "subtitle": "subtitles.item.bundle.insert"
+  },
+  "item.stripper.remove_one": {
+    "sounds": [
+      "forgottenengineers:item/stripper/remove_one1",
+      "forgottenengineers:item/stripper/remove_one2",
+      "forgottenengineers:item/stripper/remove_one3"
     ],
     "subtitle": "subtitles.item.bundle.remove_one"
   }

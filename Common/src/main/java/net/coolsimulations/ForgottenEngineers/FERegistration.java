@@ -5,9 +5,17 @@ import net.minecraft.core.Registry;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.Collection;
+import java.util.Optional;
 import java.util.function.Supplier;
 
 public class FERegistration {
@@ -17,7 +25,25 @@ public class FERegistration {
 
         SoundEvent getSoundEvent(Identifier location);
 
+        TagKey<Item> getDyeTag(DyeColor color);
+
+        TagKey<Item> getDyedTag(DyeColor color);
+
+        TagKey<Item> getGunpowders();
+
+        Optional<AxeResult> getAxeBlockState(Player player, BlockState originalState);
+
+        int getFuelTime(ItemStack item, Level level, RecipeType<?> recipeType);
+
         PlatformType getPlatformType();
+
+        record AxeResult(BlockState resultState, AxeType type) {}
+
+        enum AxeType {
+            STRIP,
+            SCRAPE,
+            WAX_OFF
+        }
     }
 
     public interface FERegistryObject<T> extends Supplier<T> {

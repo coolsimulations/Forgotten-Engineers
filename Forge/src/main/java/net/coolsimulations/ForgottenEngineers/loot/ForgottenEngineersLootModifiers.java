@@ -13,4 +13,5 @@ public class ForgottenEngineersLootModifiers {
     public static final DeferredRegister <MapCodec<? extends IGlobalLootModifier>> LOOT_MODIFIERS = DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, ForgottenEngineersCommon.MOD_ID);
 
     public static final RegistryObject<MapCodec<ForgottenEngineersGlobalLootModifierProvider.AddItemModifier>> ADD_ITEM = LOOT_MODIFIERS.register("add_item", () -> ForgottenEngineersGlobalLootModifierProvider.AddItemModifier.CODEC);
+    public static final RegistryObject<MapCodec<ForgottenEngineersGlobalLootModifierProvider.AddSuspiciousItemModifier>> ADD_SUSPICIOUS_ITEM = LOOT_MODIFIERS.register("add_suspicious_item", () -> ForgottenEngineersGlobalLootModifierProvider.AddSuspiciousItemModifier.CODEC);
 }

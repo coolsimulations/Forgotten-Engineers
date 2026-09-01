@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "restorer",
+  "key": {
+    "#": "#c:leathers",
+    "A": "minecraft:anvil",
+    "B": "#minecraft:bundles",
+    "W": "forgottenengineers:universal_wisdom"
+  },
+  "pattern": [
+    "#W#",
+    "#A#",
+    "#B#"
+  ],
+  "result": {
+    "id": "forgottenengineers:restorer"
+  }
+}

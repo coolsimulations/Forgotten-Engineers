@@ -1,5 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "router",
   "key": {
     "#": "#c:leathers",
     "B": "#minecraft:bundles",

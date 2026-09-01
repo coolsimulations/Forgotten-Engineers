@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "D": "minecraft:dispenser",
+    "I": "forgottenengineers:induction_wisdom",
+    "W": "forgottenengineers:universal_wisdom"
+  },
+  "pattern": [
+    "W",
+    "D",
+    "I"
+  ],
+  "result": {
+    "id": "forgottenengineers:combustor"
+  }
+}

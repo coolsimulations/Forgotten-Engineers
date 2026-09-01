@@ -4,6 +4,8 @@ import net.coolsimulations.ForgottenEngineers.data.ForgottenEngineersDataGenerat
 import net.coolsimulations.ForgottenEngineers.event.FEEntityEvents;
 import net.coolsimulations.ForgottenEngineers.item.ForgottenEngineersItems;
 import net.coolsimulations.ForgottenEngineers.loot.ForgottenEngineersLootModifiers;
+import net.coolsimulations.ForgottenEngineers.network.CompressorRecipeSyncPayload;
+import net.coolsimulations.ForgottenEngineers.network.InductionRecipeSyncPayload;
 import net.minecraft.util.TriState;
 import net.minecraft.world.item.CreativeModeTab;
 import net.neoforged.bus.api.IEventBus;
@@ -13,7 +15,13 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.event.OnDatapackSyncEvent;
 import net.neoforged.neoforge.event.entity.player.ItemEntityPickupEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+
+import java.util.List;
 
 @Mod(value = ForgottenEngineersCommon.MOD_ID)
 @EventBusSubscriber(modid = ForgottenEngineersCommon.MOD_ID)
@@ -45,5 +53,27 @@ public class ForgottenEngineers {
     public static void onPlayerPickUpItems(ItemEntityPickupEvent.Pre event) {
         if (!FEEntityEvents.PLAYER_ITEM_ENTITY_PICKUP.post().handle(event.getPlayer(), event.getItemEntity()))
             event.setCanPickup(TriState.FALSE);
+    }
+
+    @SubscribeEvent
+    public static void register(RegisterPayloadHandlersEvent event) {
+        PayloadRegistrar registrar = event.registrar("1");
+
+        registrar.playToClient(InductionRecipeSyncPayload.TYPE, InductionRecipeSyncPayload.STREAM_CODEC);
+        registrar.playToClient(CompressorRecipeSyncPayload.TYPE, CompressorRecipeSyncPayload.STREAM_CODEC);
+    }
+
+    @SubscribeEvent
+    public static void onDatapackSync(OnDatapackSyncEvent event) {
+        List<InductionRecipeSyncPayload.RecipeData> inductionRecipes = ForgottenEngineersCommon.createInductionRecipeSyncData();
+        List<CompressorRecipeSyncPayload.RecipeData> compressorRecipes = ForgottenEngineersCommon.createCompressorRecipeSyncData();
+
+        if (event.getPlayer() != null) {
+            PacketDistributor.sendToPlayer(event.getPlayer(), new InductionRecipeSyncPayload(inductionRecipes));
+            PacketDistributor.sendToPlayer(event.getPlayer(), new CompressorRecipeSyncPayload(compressorRecipes));
+        } else {
+            PacketDistributor.sendToAllPlayers(new InductionRecipeSyncPayload(inductionRecipes));
+            PacketDistributor.sendToAllPlayers(new CompressorRecipeSyncPayload(compressorRecipes));
+        }
     }
 }

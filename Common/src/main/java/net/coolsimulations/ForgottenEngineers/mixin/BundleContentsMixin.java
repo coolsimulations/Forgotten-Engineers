@@ -2,7 +2,6 @@ package net.coolsimulations.ForgottenEngineers.mixin;
 
 import com.mojang.serialization.DataResult;
 import net.coolsimulations.ForgottenEngineers.item.RouterItem;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemInstance;
 import net.minecraft.world.item.component.BundleContents;
 import org.apache.commons.lang3.math.Fraction;

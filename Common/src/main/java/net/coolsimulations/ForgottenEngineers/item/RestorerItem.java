@@ -7,50 +7,26 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.ARGB;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.ClickAction;
-import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
-import net.minecraft.world.item.BundleItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.component.BundleContents;
 import net.minecraft.world.item.component.TooltipDisplay;
-import org.apache.commons.lang3.math.Fraction;
-import org.jetbrains.annotations.NotNull;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 import java.util.*;
 
-public class RestorerItem extends BundleItem {
+public class RestorerItem extends StorageDeviceItem {
 
     public RestorerItem(Properties properties) {
         super(properties);
-    }
-
-    @Override
-    public boolean overrideStackedOnOther(@NotNull ItemStack restorer, Slot slot, @NotNull ClickAction action, @NotNull Player player) {
-        return checkStackIsRepairMaterialOrEmpty(slot.getItem()) && super.overrideStackedOnOther(restorer, slot, action, player);
-    }
-
-    @Override
-    public boolean overrideOtherStackedOnMe(@NotNull ItemStack restorer, @NotNull ItemStack stack, @NotNull Slot slot, @NotNull ClickAction action, @NotNull Player player, @NotNull SlotAccess access) {
-        return checkStackIsRepairMaterialOrEmpty(stack) && super.overrideOtherStackedOnMe(restorer, stack, slot, action, player, access);
-    }
-
-    @Override
-    public int getBarColor(@NotNull ItemStack stack) {
-        BundleContents contents = stack.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY);
-        return getWeightSafe(contents).compareTo(Fraction.ONE) >= 0 ? ARGB.color(255, 199, 160, 106) : ARGB.color(255, 109, 176, 166);
-    }
-
-    @Override
-    public boolean canFitInsideContainerItems() {
-        return false;
     }
 
     @Override
@@ -59,7 +35,8 @@ public class RestorerItem extends BundleItem {
         return !display.shows(DataComponents.BUNDLE_CONTENTS) ? Optional.empty() : Optional.ofNullable(bundle.get(DataComponents.BUNDLE_CONTENTS)).map(RestorerTooltip::new);
     }
 
-    protected boolean checkStackIsRepairMaterialOrEmpty(ItemStack stack) {
+    @Override
+    protected boolean checkStackIsValidOrEmpty(Player player, ItemStack stack) {
         for (Map.Entry<ResourceKey<Item>, Item> item : BuiltInRegistries.ITEM.entrySet())
             if (!stack.is(FETags.RESTORER_IGNORE_MATERIALS) && (stack.isEmpty() || new ItemStack(item.getValue()).isValidRepairItem(stack)))
                 return true;

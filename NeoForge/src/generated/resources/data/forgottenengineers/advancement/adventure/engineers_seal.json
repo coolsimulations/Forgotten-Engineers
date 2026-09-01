@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:adventure/root",
+  "criteria": {
+    "engineers_seal": {
+      "conditions": {
+        "items": [
+          {
+            "items": "forgottenengineers:engineers_seal"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.forgottenengineers.adventure.engineers_seal.description"
+    },
+    "icon": {
+      "id": "forgottenengineers:engineers_seal"
+    },
+    "title": {
+      "translate": "advancements.forgottenengineers.adventure.engineers_seal.title"
+    }
+  },
+  "requirements": [
+    [
+      "engineers_seal"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

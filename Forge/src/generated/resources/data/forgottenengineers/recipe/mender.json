@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "E": "minecraft:enchanting_table",
+    "R": "forgottenengineers:restorer",
+    "W": "forgottenengineers:universal_wisdom"
+  },
+  "pattern": [
+    "W",
+    "E",
+    "R"
+  ],
+  "result": {
+    "id": "forgottenengineers:mender"
+  }
+}

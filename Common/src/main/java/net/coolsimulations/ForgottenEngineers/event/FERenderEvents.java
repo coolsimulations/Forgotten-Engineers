@@ -11,4 +11,9 @@ public class FERenderEvents {
         for(var listener : listeners)
             listener.handle(register);
     });
+
+    public static final FEEvent<IFERenderEvent.ItemProperties> ITEM_PROPERTIES = new FEEvent<>(listeners -> (register) -> {
+        for(var listener : listeners)
+            listener.handle(register);
+    });
 }

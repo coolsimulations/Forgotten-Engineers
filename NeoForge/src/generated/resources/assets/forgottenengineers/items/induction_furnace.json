@@ -1,0 +1,14 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "on_false": {
+      "type": "minecraft:model",
+      "model": "forgottenengineers:item/induction_furnace_off"
+    },
+    "on_true": {
+      "type": "minecraft:model",
+      "model": "forgottenengineers:item/induction_furnace_on"
+    },
+    "property": "forgottenengineers:induction_furnace"
+  }
+}

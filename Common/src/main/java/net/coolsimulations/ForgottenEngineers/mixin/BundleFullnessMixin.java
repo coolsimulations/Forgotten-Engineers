@@ -1,5 +1,6 @@
 package net.coolsimulations.ForgottenEngineers.mixin;
 
+import net.coolsimulations.ForgottenEngineers.data.FETags;
 import net.coolsimulations.ForgottenEngineers.item.RouterItem;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.item.properties.numeric.BundleFullness;
@@ -15,7 +16,7 @@ public class BundleFullnessMixin {
 
     @Inject(method = "get", at = @At("HEAD"), cancellable = true)
     private void getRouter(ItemStack itemStack, ClientLevel level, ItemOwner owner, int seed, CallbackInfoReturnable<Float> cir) {
-        if (itemStack.getItem() instanceof RouterItem)
+        if (itemStack.is(FETags.ROUTERS))
             cir.setReturnValue(RouterItem.getFullnessDisplay(itemStack));
     }
 }

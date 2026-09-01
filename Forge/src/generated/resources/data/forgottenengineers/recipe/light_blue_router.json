@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_transmute",
+  "category": "equipment",
+  "group": "router_dye",
+  "input": "#forgottenengineers:routers",
+  "material": "#c:dyes/light_blue",
+  "result": {
+    "id": "forgottenengineers:light_blue_router"
+  }
+}

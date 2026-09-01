@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "universal_wisdom",
+  "ingredients": [
+    "forgottenengineers:restoration_wisdom",
+    "forgottenengineers:distribution_wisdom",
+    "forgottenengineers:compression_wisdom",
+    "forgottenengineers:induction_wisdom",
+    "forgottenengineers:engineers_seal"
+  ],
+  "result": {
+    "id": "forgottenengineers:universal_wisdom"
+  }
+}

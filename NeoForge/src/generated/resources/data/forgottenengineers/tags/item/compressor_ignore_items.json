@@ -1,0 +1,25 @@
+{
+  "values": [
+    "#minecraft:boats",
+    "minecraft:minecart",
+    "minecraft:lead",
+    "minecraft:ladder",
+    "minecraft:decorated_pot",
+    "minecraft:copper_grate",
+    "minecraft:exposed_copper_grate",
+    "minecraft:weathered_copper_grate",
+    "minecraft:oxidized_copper_grate",
+    "minecraft:waxed_copper_grate",
+    "minecraft:waxed_exposed_copper_grate",
+    "minecraft:waxed_weathered_copper_grate",
+    "minecraft:waxed_oxidized_copper_grate",
+    "#c:armors",
+    "#c:player_workstations/crafting_tables",
+    "#c:player_workstations/furnaces",
+    "#c:glass_panes",
+    "#c:chests",
+    "#c:bars",
+    "#c:villager_job_sites",
+    "#c:tools"
+  ]
+}

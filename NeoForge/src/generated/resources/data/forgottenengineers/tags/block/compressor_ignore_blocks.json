@@ -1,0 +1,15 @@
+{
+  "values": [
+    "#minecraft:doors",
+    "#minecraft:wooden_shelves",
+    "#minecraft:stairs",
+    "#minecraft:trapdoors",
+    "#minecraft:walls",
+    "#c:player_workstations/crafting_tables",
+    "#c:player_workstations/furnaces",
+    "#c:glass_panes",
+    "#c:chests",
+    "#c:bars",
+    "#c:villager_job_sites"
+  ]
+}

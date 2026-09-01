@@ -1,0 +1,6 @@
+{
+  "parent": "forgottenengineers:item/handheld_handle",
+  "textures": {
+    "layer0": "forgottenengineers:item/mender"
+  }
+}

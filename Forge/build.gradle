@@ -32,12 +32,12 @@ minecraft {
 
         register('data') {
             args '--mod', "${mod_id}", '--all', '--output', file('src/generated/resources/'), '--existing', project(":Common").file('src/main/resources/')
-            mods {
+            /*mods {
                 modServerRun {
                     source sourceSets.main
                     source project(":Common").sourceSets.main
                 }
-            }
+            }*/
         }
     }
 }

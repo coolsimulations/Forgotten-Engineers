@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "compressor",
+  "key": {
+    "#": "#c:leathers",
+    "B": "#minecraft:bundles",
+    "G": "#c:glass_blocks/cheap",
+    "P": "minecraft:piston",
+    "W": "forgottenengineers:compression_wisdom"
+  },
+  "pattern": [
+    "#W#",
+    "GPG",
+    "#B#"
+  ],
+  "result": {
+    "id": "forgottenengineers:compressor"
+  }
+}

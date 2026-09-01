@@ -2,6 +2,7 @@ package net.coolsimulations.ForgottenEngineers.client;
 
 import com.mojang.serialization.DataResult;
 import net.coolsimulations.ForgottenEngineers.ForgottenEngineersCommon;
+import net.coolsimulations.ForgottenEngineers.item.ForgottenEngineersItems;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientBundleTooltip;
@@ -19,16 +20,16 @@ import java.util.Objects;
 
 public class ClientRestorerTooltip extends ClientBundleTooltip {
 
-    private static final Identifier PROGRESSBAR_BORDER_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/restorer/restorer_progressbar_border");
-    private static final Identifier PROGRESSBAR_BORDER_FULL_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/restorer/restorer_progressbar_border_full");
-    private static final Identifier PROGRESSBAR_FILL_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/restorer/restorer_progressbar_fill");
-    private static final Identifier PROGRESSBAR_FULL_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/restorer/restorer_progressbar_full");
-    private static final Identifier SLOT_HIGHLIGHT_BACK_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/restorer/slot_highlight_back");
-    private static final Identifier SLOT_HIGHLIGHT_FRONT_SPRITE = Identifier.withDefaultNamespace("container/bundle/slot_highlight_front");
-    private static final Identifier SLOT_BACKGROUND_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/restorer/slot_background");
+    protected static final Identifier PROGRESSBAR_BORDER_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/device/device_progressbar_border");
+    protected static final Identifier PROGRESSBAR_BORDER_FULL_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/device/device_progressbar_border_full");
+    protected static final Identifier PROGRESSBAR_FILL_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/device/device_progressbar_fill");
+    protected static final Identifier PROGRESSBAR_FULL_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/device/device_progressbar_full");
+    protected static final Identifier SLOT_HIGHLIGHT_BACK_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/device/slot_highlight_back");
+    protected static final Identifier SLOT_HIGHLIGHT_FRONT_SPRITE = Identifier.withDefaultNamespace("container/bundle/slot_highlight_front");
+    protected static final Identifier SLOT_BACKGROUND_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/device/slot_background");
 
-    private static final Component BUNDLE_EMPTY_DESCRIPTION = Component.translatable("item." + ForgottenEngineersCommon.MOD_ID + ".restorer.empty.description");
-    private final BundleContents contents;
+    protected static final Component BUNDLE_EMPTY_DESCRIPTION = Component.translatable("item." + ForgottenEngineersCommon.MOD_ID + "." + ForgottenEngineersItems.RESTORER_ID.getPath() + ".empty.description");
+    protected final BundleContents contents;
 
     public ClientRestorerTooltip(final BundleContents contents) {
         super(contents);
@@ -59,7 +60,7 @@ public class ClientRestorerTooltip extends ClientBundleTooltip {
         extractProgressbar(left, y + getEmptyBundleDescriptionTextHeight(font) + 4, font, graphics, Fraction.ZERO);
     }
 
-    private void extractBundleWithItemsTooltip(final Font font, final int x, final int y, final int w, final int h, final GuiGraphicsExtractor graphics, final Fraction weight) {
+    protected void extractBundleWithItemsTooltip(final Font font, final int x, final int y, final int w, final int h, final GuiGraphicsExtractor graphics, final Fraction weight) {
         boolean isOverflowing = this.contents.size() > 12;
         List<ItemStackTemplate> shownItems = this.getShownItems(this.contents.getNumberOfItemsToShow());
         int xStartPos = x + getContentXOffset(w) + 96;
@@ -98,7 +99,7 @@ public class ClientRestorerTooltip extends ClientBundleTooltip {
             graphics.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT_HIGHLIGHT_FRONT_SPRITE, drawX, drawY, 24, 24);
     }
 
-    private static void extractProgressbar(final int x, final int y, final Font font, final GuiGraphicsExtractor graphics, final Fraction weight) {
+    protected static void extractProgressbar(final int x, final int y, final Font font, final GuiGraphicsExtractor graphics, final Fraction weight) {
         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, getProgressBarTexture(weight), x + 1, y, getProgressBarFill(weight), 13);
         graphics.blitSprite(RenderPipelines.GUI_TEXTURED, getProgressBarBorderTexture(weight), x, y, 96, 13);
         Component progressBarFillText = getProgressBarFillText(weight);

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": "forgottenengineers:compressor",
+    "S": "minecraft:netherite_scrap",
+    "W": "forgottenengineers:universal_wisdom"
+  },
+  "pattern": [
+    "W",
+    "S",
+    "C"
+  ],
+  "result": {
+    "id": "forgottenengineers:stripper"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "forgottenengineers:combustor"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_universal_wisdom": {
+      "conditions": {
+        "items": [
+          {
+            "items": "forgottenengineers:universal_wisdom"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_universal_wisdom"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "forgottenengineers:combustor"
+    ]
+  }
+}

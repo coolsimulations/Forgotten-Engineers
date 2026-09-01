@@ -29,7 +29,7 @@ public class ForgottenEngineersGlobalLootModifierProvider extends GlobalLootModi
 
     @Override
     protected void start() {
-        FELoot.generateWisdomLoot((wisdomLoot -> {
+        FELoot.generateChestLoot((wisdomLoot -> {
             LootItemCondition.Builder[] builders = wisdomLoot.lootTables().stream()
                     .map(LootTableIdCondition::builder)
                     .toArray(LootItemCondition.Builder[]::new);
@@ -38,6 +38,16 @@ public class ForgottenEngineersGlobalLootModifierProvider extends GlobalLootModi
                     wisdomLoot.lootTables().size() == 1 ? new LootTableIdCondition.Builder(wisdomLoot.lootTables().getFirst()).build() : AnyOfCondition.anyOf(builders).build()
             }, wisdomLoot.item(), wisdomLoot.weight()));
         }));
+
+        FELoot.generateArcheologyLoot((wisdomLoot -> {
+            LootItemCondition.Builder[] builders = wisdomLoot.lootTables().stream()
+                    .map(LootTableIdCondition::builder)
+                    .toArray(LootItemCondition.Builder[]::new);
+
+            this.add(wisdomLoot.name(), new AddSuspiciousItemModifier(new LootItemCondition[] {
+                    wisdomLoot.lootTables().size() == 1 ? new LootTableIdCondition.Builder(wisdomLoot.lootTables().getFirst()).build() : AnyOfCondition.anyOf(builders).build()
+            }, wisdomLoot.item(), wisdomLoot.weight(), wisdomLoot.totalWeight()));
+        }));
     }
 
     public static class AddItemModifier extends LootModifier {
@@ -45,7 +55,7 @@ public class ForgottenEngineersGlobalLootModifierProvider extends GlobalLootModi
                 LootModifier.codecStart(inst).and(
                         BuiltInRegistries.ITEM.byNameCodec().fieldOf("item").forGetter(e -> e.item)
                 ).and(Codec.INT.fieldOf("weight").forGetter(e -> e.weight)
-                ).apply(inst, (conditionsIn, integer, item, weight) -> new AddItemModifier(conditionsIn, item, weight)));
+                ).apply(inst, (conditionsIn, priority, item, weight) -> new AddItemModifier(conditionsIn, item, weight)));
         private final Item item;
         private final int weight;
 
@@ -70,6 +80,44 @@ public class ForgottenEngineersGlobalLootModifierProvider extends GlobalLootModi
 
         @Override
         public @NonNull MapCodec<? extends IGlobalLootModifier> codec() {
+            return CODEC;
+        }
+    }
+
+    public static class AddSuspiciousItemModifier extends LootModifier {
+        public static final MapCodec<AddSuspiciousItemModifier> CODEC = RecordCodecBuilder.mapCodec(inst ->
+                LootModifier.codecStart(inst).and(
+                        BuiltInRegistries.ITEM.byNameCodec().fieldOf("item").forGetter(e -> e.item)
+                ).and(Codec.INT.fieldOf("weight").forGetter(e -> e.weight)
+                ).and(Codec.INT.fieldOf("total_weight").forGetter(e -> e.totalWeight)
+                ).apply(inst, ((lootItemConditions, priority, item, weight, totalWeight) -> new AddSuspiciousItemModifier(lootItemConditions, item, weight, totalWeight))));
+        private final Item item;
+        private final int weight;
+        private final int totalWeight;
+
+        public AddSuspiciousItemModifier(LootItemCondition[] conditionsIn, Item item, int weight, int totalWeight) {
+            super(conditionsIn, 1000);
+            this.item = item;
+            this.weight = weight;
+            this.totalWeight = totalWeight;
+        }
+
+        @Override
+        protected @NonNull ObjectArrayList<ItemStack> doApply(@NonNull ObjectArrayList<ItemStack> generatedLoot, @NonNull LootContext lootContext) {
+            for (LootItemCondition condition : this.conditions) {
+                if(!condition.test(lootContext)) {
+                    return generatedLoot;
+                }
+            }
+            if (lootContext.getRandom().nextFloat() <= (float) this.weight / this.totalWeight) {
+                generatedLoot.clear();
+                generatedLoot.add(new ItemStack(this.item));
+            }
+            return generatedLoot;
+        }
+
+        @Override
+        public MapCodec<? extends IGlobalLootModifier> codec() {
             return CODEC;
         }
     }

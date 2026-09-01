@@ -1,9 +1,15 @@
 {
   "entries": [
     "forgottenengineers:restoration_wisdom_from_mineshaft",
+    "forgottenengineers:restoration_wisdom_from_dungeon",
+    "forgottenengineers:compression_wisdom_from_ocean_ruin_warm",
+    "forgottenengineers:induction_wisdom_from_portal",
+    "forgottenengineers:engineers_seal_from_ancient_city",
     "forgottenengineers:distribution_wisdom_from_stronghold",
     "forgottenengineers:restoration_wisdom_from_village",
-    "forgottenengineers:distribution_wisdom_from_end_city"
+    "forgottenengineers:distribution_wisdom_from_end_city",
+    "forgottenengineers:induction_wisdom_from_nether",
+    "forgottenengineers:compression_wisdom_from_trail_ruins"
   ],
   "replace": false
 }

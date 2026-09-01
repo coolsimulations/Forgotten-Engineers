@@ -1,0 +1,12 @@
+{
+  "type": "forgottenengineers:add_suspicious_item",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:archaeology/ocean_ruin_warm"
+    }
+  ],
+  "item": "forgottenengineers:compression_wisdom",
+  "total_weight": 15,
+  "weight": 1
+}

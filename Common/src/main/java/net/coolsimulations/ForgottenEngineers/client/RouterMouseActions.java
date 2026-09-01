@@ -1,5 +1,6 @@
 package net.coolsimulations.ForgottenEngineers.client;
 
+import net.coolsimulations.ForgottenEngineers.data.FETags;
 import net.coolsimulations.ForgottenEngineers.item.RouterItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.ScrollWheelHandler;
@@ -28,7 +29,7 @@ public class RouterMouseActions extends BundleMouseActions {
         List<? extends ItemInstance> items = itemStack.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY).items();
         List<Integer> visualContentsIndices = RouterItem.getVisualContentsIndices(items);
 
-        if (visualContentsIndices.isEmpty()) return false;
+        if (visualContentsIndices.isEmpty() || items.isEmpty()) return false;
 
         Vector2i wheelXY = this.scrollWheelHandler.onMouseScroll(scrollX, scrollY);
         int wheel = wheelXY.y == 0 ? -wheelXY.x : wheelXY.y;
@@ -58,6 +59,6 @@ public class RouterMouseActions extends BundleMouseActions {
 
     @Override
     public boolean matches(final Slot slot) {
-        return slot.getItem().getItem() instanceof RouterItem;
+        return slot.getItem().is(FETags.ROUTERS);
     }
 }

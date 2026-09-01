@@ -1,28 +1,53 @@
 package net.coolsimulations.ForgottenEngineers.data;
 
+import net.coolsimulations.ForgottenEngineers.FEServices;
+import net.coolsimulations.ForgottenEngineers.ForgottenEngineersCommon;
 import net.coolsimulations.ForgottenEngineers.item.FEItems;
 import net.coolsimulations.ForgottenEngineers.item.ForgottenEngineersItems;
 import net.minecraft.advancements.triggers.Criterion;
 import net.minecraft.advancements.triggers.InventoryChangeTrigger;
 import net.minecraft.core.HolderGetter;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.*;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.ColorCollection;
 
 import java.util.function.Function;
 
 public class FERecipes {
 
-    public static void generateShapedRecipes(RecipeOutput output, HolderGetter<Item> items, Function<Item, Criterion<InventoryChangeTrigger.TriggerInstance>> has, TagKey<Item> leather) {
+    public static void generateItemRecipes(RecipeOutput output, HolderGetter<Item> items, Function<Item, Criterion<InventoryChangeTrigger.TriggerInstance>> has, TagKey<Item> leather, TagKey<Item> glass, TagKey<Item> ender, TagKey<Item> blaze, TagKey<Item> copper, TagKey<Item> iron) {
 
-        ShapedRecipeBuilder.shaped(items, RecipeCategory.MISC, FEItems.RESTORER).pattern("#W#").pattern("#A#").pattern("#B#").define('W', FEItems.RESTORATION_WISDOM).define('#', leather).define('A', Items.ANVIL).define('B', ItemTags.BUNDLES).unlockedBy("has_" + ForgottenEngineersItems.RESTORATION_WISDOM_ID.getPath(), has.apply(FEItems.RESTORATION_WISDOM)).save(output);
-        ShapedRecipeBuilder.shaped(items, RecipeCategory.MISC, FEItems.ROUTER).pattern("#W#").pattern("#H#").pattern("#B#").define('W', FEItems.DISTRIBUTION_WISDOM).define('#', leather).define('H', Items.HOPPER).define('B', ItemTags.BUNDLES).unlockedBy("has_" + ForgottenEngineersItems.DISTRIBUTION_WISDOM_ID.getPath(), has.apply(FEItems.DISTRIBUTION_WISDOM)).save(output);
+        ShapedRecipeBuilder.shaped(items, RecipeCategory.TOOLS, FEItems.RESTORER).pattern("#W#").pattern("#A#").pattern("#B#").define('W', FEItems.RESTORATION_WISDOM).define('#', leather).define('A', Items.ANVIL).define('B', ItemTags.BUNDLES).group("restorer").unlockedBy("has_" + ForgottenEngineersItems.RESTORATION_WISDOM_ID.getPath(), has.apply(FEItems.RESTORATION_WISDOM)).save(output);
+        ShapedRecipeBuilder.shaped(items, RecipeCategory.TOOLS, FEItems.RESTORER).pattern("#W#").pattern("#A#").pattern("#B#").define('W', FEItems.UNIVERSAL_WISDOM).define('#', leather).define('A', Items.ANVIL).define('B', ItemTags.BUNDLES).group("restorer").unlockedBy("has_" + ForgottenEngineersItems.UNIVERSAL_WISDOM_ID.getPath(), has.apply(FEItems.UNIVERSAL_WISDOM)).save(output, Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, ForgottenEngineersItems.RESTORER_ID.getPath() + "_from_" + ForgottenEngineersItems.UNIVERSAL_WISDOM_ID.getPath()).toString());
+        ShapedRecipeBuilder.shaped(items, RecipeCategory.TOOLS, FEItems.ROUTER).pattern("#W#").pattern("#H#").pattern("#B#").define('W', FEItems.DISTRIBUTION_WISDOM).define('#', leather).define('H', Items.HOPPER).define('B', ItemTags.BUNDLES).group("router").unlockedBy("has_" + ForgottenEngineersItems.DISTRIBUTION_WISDOM_ID.getPath(), has.apply(FEItems.DISTRIBUTION_WISDOM)).save(output);
+        ShapedRecipeBuilder.shaped(items, RecipeCategory.TOOLS, FEItems.ROUTER).pattern("#W#").pattern("#H#").pattern("#B#").define('W', FEItems.UNIVERSAL_WISDOM).define('#', leather).define('H', Items.HOPPER).define('B', ItemTags.BUNDLES).group("router").unlockedBy("has_" + ForgottenEngineersItems.UNIVERSAL_WISDOM_ID.getPath(), has.apply(FEItems.UNIVERSAL_WISDOM)).save(output, Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, ForgottenEngineersItems.ROUTER_ID.getPath() + "_from_" + ForgottenEngineersItems.UNIVERSAL_WISDOM_ID.getPath()).toString());
+        ShapedRecipeBuilder.shaped(items, RecipeCategory.TOOLS, FEItems.COMPRESSOR).pattern("#W#").pattern("GPG").pattern("#B#").define('W', FEItems.COMPRESSION_WISDOM).define('#', leather).define('P', Items.PISTON).define('G', glass).define('B', ItemTags.BUNDLES).group("compressor").unlockedBy("has_" + ForgottenEngineersItems.COMPRESSION_WISDOM_ID.getPath(), has.apply(FEItems.COMPRESSION_WISDOM)).save(output);
+        ShapedRecipeBuilder.shaped(items, RecipeCategory.TOOLS, FEItems.COMPRESSOR).pattern("#W#").pattern("GPG").pattern("#B#").define('W', FEItems.UNIVERSAL_WISDOM).define('#', leather).define('P', Items.PISTON).define('G', glass).define('B', ItemTags.BUNDLES).group("compressor").unlockedBy("has_" + ForgottenEngineersItems.UNIVERSAL_WISDOM_ID.getPath(), has.apply(FEItems.UNIVERSAL_WISDOM)).save(output, Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, ForgottenEngineersItems.COMPRESSOR_ID.getPath() + "_from_" + ForgottenEngineersItems.UNIVERSAL_WISDOM_ID.getPath()).toString());
+        ShapedRecipeBuilder.shaped(items, RecipeCategory.TOOLS, FEItems.FUEL_CARRIER).pattern("#W#").pattern("#I#").pattern("#B#").define('W', FEItems.INDUCTION_WISDOM).define('#', leather).define('I', iron).define('B', ItemTags.BUNDLES).group("fuel_carrier").unlockedBy("has_" + ForgottenEngineersItems.INDUCTION_WISDOM_ID.getPath(), has.apply(FEItems.INDUCTION_WISDOM)).save(output);
+        ShapedRecipeBuilder.shaped(items, RecipeCategory.TOOLS, FEItems.FUEL_CARRIER).pattern("#W#").pattern("#I#").pattern("#B#").define('W', FEItems.UNIVERSAL_WISDOM).define('#', leather).define('I', iron).define('B', ItemTags.BUNDLES).group("fuel_carrier").unlockedBy("has_" + ForgottenEngineersItems.UNIVERSAL_WISDOM_ID.getPath(), has.apply(FEItems.UNIVERSAL_WISDOM)).save(output, Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, ForgottenEngineersItems.FUEL_CARRIER_ID.getPath() + "_from_" + ForgottenEngineersItems.UNIVERSAL_WISDOM_ID.getPath()).toString());
+        ShapedRecipeBuilder.shaped(items, RecipeCategory.TOOLS, FEItems.INDUCTION_FURNACE).pattern("#W#").pattern("#F#").pattern("#B#").define('W', FEItems.INDUCTION_WISDOM).define('#', leather).define('F', Items.BLAST_FURNACE).define('B', ItemTags.BUNDLES).group("induction_furnace").unlockedBy("has_" + ForgottenEngineersItems.INDUCTION_WISDOM_ID.getPath(), has.apply(FEItems.INDUCTION_WISDOM)).save(output);
+        ShapedRecipeBuilder.shaped(items, RecipeCategory.TOOLS, FEItems.INDUCTION_FURNACE).pattern("#W#").pattern("#F#").pattern("#B#").define('W', FEItems.UNIVERSAL_WISDOM).define('#', leather).define('F', Items.BLAST_FURNACE).define('B', ItemTags.BUNDLES).group("induction_furnace").unlockedBy("has_" + ForgottenEngineersItems.UNIVERSAL_WISDOM_ID.getPath(), has.apply(FEItems.UNIVERSAL_WISDOM)).save(output, Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, ForgottenEngineersItems.INDUCTION_FURNACE_ID.getPath() + "_from_" + ForgottenEngineersItems.UNIVERSAL_WISDOM_ID.getPath()).toString());
+
+        ShapedRecipeBuilder.shaped(items, RecipeCategory.TOOLS, FEItems.MENDER).pattern("W").pattern("E").pattern("R").define('W', FEItems.UNIVERSAL_WISDOM).define('E', Items.ENCHANTING_TABLE).define('R', FEItems.RESTORER).unlockedBy("has_" + ForgottenEngineersItems.UNIVERSAL_WISDOM_ID.getPath(), has.apply(FEItems.UNIVERSAL_WISDOM)).save(output);
+        ShapedRecipeBuilder.shaped(items, RecipeCategory.TOOLS, FEItems.ENDER_ROUTER).pattern("W").pattern("E").pattern("R").define('W', FEItems.UNIVERSAL_WISDOM).define('E', ender).define('R', FETags.ROUTERS).unlockedBy("has_" + ForgottenEngineersItems.UNIVERSAL_WISDOM_ID.getPath(), has.apply(FEItems.UNIVERSAL_WISDOM)).save(output);
+        ShapedRecipeBuilder.shaped(items, RecipeCategory.TOOLS, FEItems.STRIPPER).pattern("W").pattern("S").pattern("C").define('W', FEItems.UNIVERSAL_WISDOM).define('S', Items.NETHERITE_SCRAP).define('C', FEItems.COMPRESSOR).unlockedBy("has_" + ForgottenEngineersItems.UNIVERSAL_WISDOM_ID.getPath(), has.apply(FEItems.UNIVERSAL_WISDOM)).save(output);
+        ShapedRecipeBuilder.shaped(items, RecipeCategory.TOOLS, FEItems.COMBUSTOR).pattern("W").pattern("D").pattern("I").define('W', FEItems.UNIVERSAL_WISDOM).define('D', Items.DISPENSER).define('I', FEItems.INDUCTION_WISDOM).unlockedBy("has_" + ForgottenEngineersItems.UNIVERSAL_WISDOM_ID.getPath(), has.apply(FEItems.UNIVERSAL_WISDOM)).save(output);
 
         ShapedRecipeBuilder.shaped(items, RecipeCategory.MISC, FEItems.RESTORATION_WISDOM, 2).pattern("#A#").pattern("#W#").pattern("#A#").define('W', FEItems.RESTORATION_WISDOM).define('#', FETags.PAPERS).define('A', Items.ANVIL).unlockedBy("has_" + ForgottenEngineersItems.RESTORATION_WISDOM_ID.getPath(), has.apply(FEItems.RESTORATION_WISDOM)).save(output);
         ShapedRecipeBuilder.shaped(items, RecipeCategory.MISC, FEItems.DISTRIBUTION_WISDOM, 2).pattern("#H#").pattern("#W#").pattern("#H#").define('W', FEItems.DISTRIBUTION_WISDOM).define('#', FETags.PAPERS).define('H', Items.HOPPER).unlockedBy("has_" + ForgottenEngineersItems.DISTRIBUTION_WISDOM_ID.getPath(), has.apply(FEItems.DISTRIBUTION_WISDOM)).save(output);
+        ShapedRecipeBuilder.shaped(items, RecipeCategory.MISC, FEItems.COMPRESSION_WISDOM, 2).pattern("#P#").pattern("#W#").pattern("#P#").define('W', FEItems.COMPRESSION_WISDOM).define('#', FETags.PAPERS).define('P', Items.PISTON).unlockedBy("has_" + ForgottenEngineersItems.COMPRESSION_WISDOM_ID.getPath(), has.apply(FEItems.COMPRESSION_WISDOM)).save(output);
+        ShapedRecipeBuilder.shaped(items, RecipeCategory.MISC, FEItems.INDUCTION_WISDOM, 2).pattern("#B#").pattern("#W#").pattern("#B#").define('W', FEItems.INDUCTION_WISDOM).define('#', FETags.PAPERS).define('B', blaze).unlockedBy("has_" + ForgottenEngineersItems.INDUCTION_WISDOM_ID.getPath(), has.apply(FEItems.INDUCTION_WISDOM)).save(output);
+
+        ShapelessRecipeBuilder.shapeless(items, RecipeCategory.MISC, FEItems.UNIVERSAL_WISDOM).requires(FEItems.RESTORATION_WISDOM).requires(FEItems.DISTRIBUTION_WISDOM).requires(FEItems.COMPRESSION_WISDOM).requires(FEItems.INDUCTION_WISDOM).requires(FEItems.ENGINEERS_SEAL).group(ForgottenEngineersItems.UNIVERSAL_WISDOM_ID.getPath()).unlockedBy("has_" + ForgottenEngineersItems.ENGINEERS_SEAL_ID.getPath(), has.apply(FEItems.ENGINEERS_SEAL)).save(output, Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, ForgottenEngineersItems.UNIVERSAL_WISDOM_ID.getPath() + "_from_" + ForgottenEngineersItems.ENGINEERS_SEAL_ID.getPath()).toString());
+        ShapedRecipeBuilder.shaped(items, RecipeCategory.MISC, FEItems.UNIVERSAL_WISDOM, 2).pattern("#C#").pattern("SWS").pattern("#C#").define('W', FEItems.UNIVERSAL_WISDOM).define('#', FETags.PAPERS).define('C', copper).define('S', Items.SHULKER_SHELL).group(ForgottenEngineersItems.UNIVERSAL_WISDOM_ID.getPath()).unlockedBy("has_" + ForgottenEngineersItems.UNIVERSAL_WISDOM_ID.getPath(), has.apply(FEItems.UNIVERSAL_WISDOM)).save(output);
+    }
+
+    public static void generateTagRecipes(RecipeOutput output, HolderGetter<Item> items, Function<TagKey<Item>, Criterion<InventoryChangeTrigger.TriggerInstance>> has) {
+        ColorCollection.zipApply(ColorCollection.VALUES, FEItems.DYED_ROUTER, (color, item) -> TransmuteRecipeBuilder.transmute(RecipeCategory.TOOLS, Ingredient.of(items.getOrThrow(FETags.ROUTERS)), Ingredient.of(items.getOrThrow(FEServices.REGISTRY.getDyeTag(color))), item).group("router_dye").unlockedBy("has_" + color.getName() + "_dye", has.apply(FEServices.REGISTRY.getDyeTag(color))).save(output));
     }
 }

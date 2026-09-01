@@ -1,0 +1,12 @@
+{
+  "type": "forgottenengineers:add_suspicious_item",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:archaeology/trail_ruins_rare"
+    }
+  ],
+  "item": "forgottenengineers:compression_wisdom",
+  "total_weight": 12,
+  "weight": 1
+}

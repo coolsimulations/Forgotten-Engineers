@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_compression_wisdom": {
+      "conditions": {
+        "items": [
+          {
+            "items": "forgottenengineers:compression_wisdom"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "forgottenengineers:compressor"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_compression_wisdom"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "forgottenengineers:compressor"
+    ]
+  }
+}

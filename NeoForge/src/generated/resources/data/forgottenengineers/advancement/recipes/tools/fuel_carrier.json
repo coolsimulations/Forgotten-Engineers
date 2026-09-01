@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_induction_wisdom": {
+      "conditions": {
+        "items": [
+          {
+            "items": "forgottenengineers:induction_wisdom"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "forgottenengineers:fuel_carrier"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_induction_wisdom"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "forgottenengineers:fuel_carrier"
+    ]
+  }
+}

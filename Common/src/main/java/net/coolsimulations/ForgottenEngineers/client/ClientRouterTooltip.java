@@ -2,6 +2,7 @@ package net.coolsimulations.ForgottenEngineers.client;
 
 import com.mojang.serialization.DataResult;
 import net.coolsimulations.ForgottenEngineers.ForgottenEngineersCommon;
+import net.coolsimulations.ForgottenEngineers.item.ForgottenEngineersItems;
 import net.coolsimulations.ForgottenEngineers.item.RouterItem;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
@@ -22,19 +23,19 @@ import java.util.Objects;
 
 public class ClientRouterTooltip extends ClientBundleTooltip {
 
-    private static final Identifier PROGRESSBAR_BORDER_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/restorer/restorer_progressbar_border");
-    private static final Identifier PROGRESSBAR_BORDER_FULL_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/restorer/restorer_progressbar_border_full");
-    private static final Identifier PROGRESSBAR_FILL_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/restorer/restorer_progressbar_fill");
+    private static final Identifier PROGRESSBAR_BORDER_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/device/device_progressbar_border");
+    private static final Identifier PROGRESSBAR_BORDER_FULL_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/device/device_progressbar_border_full");
+    private static final Identifier PROGRESSBAR_FILL_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/device/device_progressbar_fill");
     private static final Identifier PROGRESSBAR_SHULKER_FILL_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/router/router_progressbar_fill");
-    private static final Identifier PROGRESSBAR_FULL_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/restorer/restorer_progressbar_full");
-    private static final Identifier SLOT_HIGHLIGHT_BACK_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/restorer/slot_highlight_back");
+    private static final Identifier PROGRESSBAR_FULL_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/device/device_progressbar_full");
+    private static final Identifier SLOT_HIGHLIGHT_BACK_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/device/slot_highlight_back");
     private static final Identifier SLOT_HIGHLIGHT_FRONT_SPRITE = Identifier.withDefaultNamespace("container/bundle/slot_highlight_front");
-    private static final Identifier SLOT_BACKGROUND_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/restorer/slot_background");
+    private static final Identifier SLOT_BACKGROUND_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/device/slot_background");
 
     private static final Identifier SHULKER_SLOT_BACKGROUND_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/router/shulker_slot_background");
     private static final Identifier SHULKER_SLOT_HIGHLIGHT_BACKGROUND_SPRITE = Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "container/router/shulker_slot_highlight_background");
 
-    private static final Component BUNDLE_EMPTY_DESCRIPTION = Component.translatable("item." + ForgottenEngineersCommon.MOD_ID + ".router.empty.description");
+    private static final Component BUNDLE_EMPTY_DESCRIPTION = Component.translatable("item." + ForgottenEngineersCommon.MOD_ID + ".device.empty.description");
     private final BundleContents contents;
 
     public ClientRouterTooltip(final BundleContents contents) {

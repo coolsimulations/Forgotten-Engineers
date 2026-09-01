@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "fuel_carrier",
+  "key": {
+    "#": "#c:leathers",
+    "B": "#minecraft:bundles",
+    "I": "#c:ingots/iron",
+    "W": "forgottenengineers:universal_wisdom"
+  },
+  "pattern": [
+    "#W#",
+    "#I#",
+    "#B#"
+  ],
+  "result": {
+    "id": "forgottenengineers:fuel_carrier"
+  }
+}

@@ -2,6 +2,8 @@ package net.coolsimulations.ForgottenEngineers;
 
 import net.coolsimulations.ForgottenEngineers.FERegistration.FERegistrationProvider;
 import net.coolsimulations.ForgottenEngineers.FERegistration.FERegistryObject;
+import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -9,13 +11,16 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.WeatheringCopper;
+import net.minecraft.world.level.block.state.BlockState;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Supplier;
 
 public class ForgottenEngineersRegistry implements FERegistrationProvider.Factory, FERegistration.IFERegistry {
@@ -38,6 +43,80 @@ public class ForgottenEngineersRegistry implements FERegistrationProvider.Factor
     @Override
     public SoundEvent getSoundEvent(Identifier location) {
         return BuiltInRegistries.SOUND_EVENT.get(location).map(Holder.Reference::value).orElse(SoundEvents.EXPERIENCE_ORB_PICKUP);
+    }
+
+    @Override
+    public TagKey<Item> getDyeTag(DyeColor color) {
+        return switch (color) {
+            case BLACK -> ConventionalItemTags.BLACK_DYES;
+            case BLUE -> ConventionalItemTags.BLUE_DYES;
+            case BROWN -> ConventionalItemTags.BROWN_DYES;
+            case CYAN -> ConventionalItemTags.CYAN_DYES;
+            case GRAY -> ConventionalItemTags.GRAY_DYES;
+            case GREEN -> ConventionalItemTags.GREEN_DYES;
+            case LIGHT_BLUE -> ConventionalItemTags.LIGHT_BLUE_DYES;
+            case LIGHT_GRAY -> ConventionalItemTags.LIGHT_GRAY_DYES;
+            case LIME -> ConventionalItemTags.LIME_DYES;
+            case MAGENTA -> ConventionalItemTags.MAGENTA_DYES;
+            case ORANGE -> ConventionalItemTags.ORANGE_DYES;
+            case PINK -> ConventionalItemTags.PINK_DYES;
+            case PURPLE -> ConventionalItemTags.PURPLE_DYES;
+            case RED -> ConventionalItemTags.RED_DYES;
+            case WHITE -> ConventionalItemTags.WHITE_DYES;
+            case YELLOW -> ConventionalItemTags.YELLOW_DYES;
+        };
+    }
+
+    @Override
+    public TagKey<Item> getDyedTag(DyeColor color) {
+        return switch (color) {
+            case BLACK -> ConventionalItemTags.BLACK_DYED;
+            case BLUE -> ConventionalItemTags.BLUE_DYED;
+            case BROWN -> ConventionalItemTags.BROWN_DYED;
+            case CYAN -> ConventionalItemTags.CYAN_DYED;
+            case GRAY -> ConventionalItemTags.GRAY_DYED;
+            case GREEN -> ConventionalItemTags.GREEN_DYED;
+            case LIGHT_BLUE -> ConventionalItemTags.LIGHT_BLUE_DYED;
+            case LIGHT_GRAY -> ConventionalItemTags.LIGHT_GRAY_DYED;
+            case LIME -> ConventionalItemTags.LIME_DYED;
+            case MAGENTA -> ConventionalItemTags.MAGENTA_DYED;
+            case ORANGE -> ConventionalItemTags.ORANGE_DYED;
+            case PINK -> ConventionalItemTags.PINK_DYED;
+            case PURPLE -> ConventionalItemTags.PURPLE_DYED;
+            case RED -> ConventionalItemTags.RED_DYED;
+            case WHITE -> ConventionalItemTags.WHITE_DYED;
+            case YELLOW -> ConventionalItemTags.YELLOW_DYED;
+        };
+    }
+
+    @Override
+    public TagKey<Item> getGunpowders() {
+        return ConventionalItemTags.GUNPOWDERS;
+    }
+
+    @Override
+    public Optional<AxeResult> getAxeBlockState(Player player, BlockState originalState) {
+        BlockState fabricStripState = StrippableBlockRegistry.getStrippedBlockState(originalState);
+
+        if (fabricStripState != null && !fabricStripState.is(originalState.getBlock()))
+            return Optional.of(new AxeResult(fabricStripState, AxeType.STRIP));
+
+        Optional<BlockState> vanillaScrapeState = WeatheringCopper.getPrevious(originalState);
+
+        if (vanillaScrapeState.isPresent() && !vanillaScrapeState.get().is(originalState.getBlock()))
+            return Optional.of(new AxeResult(vanillaScrapeState.get(), AxeType.SCRAPE));
+
+        Block vanillaWaxState = HoneycombItem.WAX_OFF_BY_BLOCK.get().get(originalState.getBlock());
+
+        if (vanillaWaxState != null && !vanillaWaxState.defaultBlockState().is(originalState.getBlock()))
+            return Optional.of(new AxeResult(vanillaWaxState.defaultBlockState(), AxeType.WAX_OFF));
+
+        return Optional.empty();
+    }
+
+    @Override
+    public int getFuelTime(ItemStack item, Level level, RecipeType<?> recipeType) {
+        return level.fuelValues().burnDuration(item);
     }
 
     @Override

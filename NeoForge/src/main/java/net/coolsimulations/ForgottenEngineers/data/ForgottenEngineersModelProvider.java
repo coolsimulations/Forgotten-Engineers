@@ -19,6 +19,9 @@ public class ForgottenEngineersModelProvider {
         @Override
         protected void registerModels(@NonNull BlockModelGenerators blockModels, @NonNull ItemModelGenerators itemModels) {
             FEModels.generateFlatItems(flat -> itemModels.generateFlatItem(flat, ModelTemplates.FLAT_ITEM));
+            FEModels.generateHandheldItems(handheld -> itemModels.generateFlatItem(handheld, FEModels.FLAT_HANDHELD_HANDLE_ITEM));
+            FEModels.generateInductionFurnace(itemModels);
+            FEModels.generateCombustor(itemModels);
         }
     }
 }
