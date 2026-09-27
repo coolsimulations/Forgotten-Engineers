@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "forgottenengineers:fuel_carrier_from_universal_wisdom"
+        "recipes": "forgottenengineers:fuel_carrier_from_universal_wisdom"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

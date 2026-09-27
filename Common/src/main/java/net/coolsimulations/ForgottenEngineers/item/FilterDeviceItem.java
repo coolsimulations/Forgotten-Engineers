@@ -6,12 +6,12 @@ import net.coolsimulations.ForgottenEngineers.data.FETags;
 import net.coolsimulations.ForgottenEngineers.item.tooltip.FilterDeviceTooltip;
 import net.coolsimulations.ForgottenEngineers.sounds.FESounds;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickAction;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
-import net.minecraft.world.item.BundleItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.BundleContents;
 import net.minecraft.world.item.component.TooltipDisplay;
@@ -35,7 +35,7 @@ public class FilterDeviceItem extends StorageDeviceItem {
         if (initialContents == null) {
             return false;
         } else {
-            BundleContents.Mutable contents = new BundleContents.Mutable(initialContents);
+            BundleContents.Mutable contents = initialContents.asMutable();
             if (clickAction == ClickAction.PRIMARY && !other.isEmpty()) {
                 if (tryTransfer(contents, slot, player) > 0) {
                     if (self.is(FEItems.COMPRESSOR))
@@ -90,7 +90,7 @@ public class FilterDeviceItem extends StorageDeviceItem {
             if (initialContents == null) {
                 return false;
             } else {
-                BundleContents.Mutable contents = new BundleContents.Mutable(initialContents);
+                BundleContents.Mutable contents = initialContents.asMutable();
                 if (clickAction == ClickAction.PRIMARY && !other.isEmpty()) {
                     if (slot.allowModification(player) && tryInsert(contents, other) > 0) {
                         if (self.is(FEItems.COMPRESSOR))
@@ -140,7 +140,7 @@ public class FilterDeviceItem extends StorageDeviceItem {
         if (contents != null && !contents.isEmpty()) {
             Optional<ItemStack> itemStack = removeOneItemFromBundle(bundle, player, contents);
             if (itemStack.isPresent()) {
-                player.drop(itemStack.get(), true);
+                player.drop(itemStack.get(), true, Prediction.PREDICTED);
                 return true;
             } else {
                 return false;
@@ -192,7 +192,7 @@ public class FilterDeviceItem extends StorageDeviceItem {
     }
 
     private static Optional<ItemStack> removeOneItemFromBundle(final ItemStack self, final Player player, final BundleContents initialContents) {
-        BundleContents.Mutable contents = new BundleContents.Mutable(initialContents);
+        BundleContents.Mutable contents = initialContents.asMutable();
         ItemStack removed = removeOne(contents);
         if (removed != null) {
             if (self.is(FEItems.COMPRESSOR))

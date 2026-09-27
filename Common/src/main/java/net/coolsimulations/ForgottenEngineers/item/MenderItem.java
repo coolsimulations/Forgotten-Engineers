@@ -9,6 +9,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
@@ -58,7 +59,7 @@ public class MenderItem extends StorageDeviceItem {
 
         if (contents.isEmpty()) return;
 
-        BundleContents.Mutable mutable = new BundleContents.Mutable(contents);
+        BundleContents.Mutable mutable = contents.asMutable();
 
         for (int i = 0; i < mutable.items.size(); i++) {
             ItemStack item = mutable.items.get(i);
@@ -73,7 +74,7 @@ public class MenderItem extends StorageDeviceItem {
                         mutable.items.remove(i);
                     mender.set(DataComponents.BUNDLE_CONTENTS, mutable.toImmutable());
                     ItemStack result = new ItemStack(Items.EXPERIENCE_BOTTLE);
-                    mutable = new BundleContents.Mutable(mender.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY));
+                    mutable = mender.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY).asMutable();
                     int amountAdded = mutable.tryInsert(result);
                     player.awardStat(Stats.ITEM_CRAFTED.get(result.getItem()));
                     player.giveExperiencePoints(-requiredXP);
@@ -84,9 +85,9 @@ public class MenderItem extends StorageDeviceItem {
                             if (output.isEnder()) {
                                 remaining = player.getEnderChestInventory().addItem(remaining);
                                 if (!remaining.isEmpty())
-                                    player.getInventory().placeItemBackInInventory(remaining);
+                                    player.getInventory().placeItemBackInInventory(remaining, Prediction.SERVER_ONLY);
                             } else
-                                player.getInventory().placeItemBackInInventory(remaining);
+                                player.getInventory().placeItemBackInInventory(remaining, Prediction.SERVER_ONLY);
                         }
                     }
                 }

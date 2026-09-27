@@ -83,7 +83,7 @@ public class InductionFurnaceItem extends FilterDeviceItem {
             inductionFurnace = result.get().device();
 
             BundleContents contents = inductionFurnace.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY);
-            BundleContents.Mutable mutable = new BundleContents.Mutable(contents);
+            BundleContents.Mutable mutable = contents.asMutable();
 
             Optional<ItemStack> inductionFurnaceFilter = mutable.items.stream().filter(item -> item.is(filter)).findFirst();
             if (inductionFurnaceFilter.isPresent()) {
@@ -132,7 +132,7 @@ public class InductionFurnaceItem extends FilterDeviceItem {
 
     private static Optional<ForgottenEngineersCommon.RecipeResult> processStack(Player player, InductionRecipe recipe, ItemStack inductionFurnace, ItemStack stack, Level level, Map<Integer, ItemStack> fuelCarriers) {
         BundleContents contents = inductionFurnace.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY);
-        BundleContents.Mutable mutable = new BundleContents.Mutable(contents);
+        BundleContents.Mutable mutable = contents.asMutable();
         Optional<SmeltResult> result = trySmelt(player, recipe, stack, level, fuelCarriers);
 
         if (result.isPresent()) {

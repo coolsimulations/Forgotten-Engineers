@@ -1,11 +1,9 @@
 {
   "type": "forgottenengineers:add_item",
-  "conditions": [
-    {
-      "condition": "neoforge:loot_table_id",
-      "loot_table_id": "minecraft:chests/stronghold_library"
-    }
-  ],
+  "condition": {
+    "type": "neoforge:loot_table_id",
+    "loot_table_id": "minecraft:chests/stronghold_library"
+  },
   "item": "forgottenengineers:distribution_wisdom",
   "weight": 6
 }

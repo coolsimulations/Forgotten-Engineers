@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "forgottenengineers:mender"
+        "recipes": "forgottenengineers:mender"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

@@ -11,6 +11,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ARGB;
 import net.minecraft.util.Mth;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.SlotAccess;
@@ -48,7 +49,7 @@ public class RouterItem extends BundleItem {
             return false;
         } else {
             ItemStack other = slot.getItem();
-            BundleContents.Mutable contents = new BundleContents.Mutable(initialContents);
+            BundleContents.Mutable contents = initialContents.asMutable();
             if (clickAction == ClickAction.PRIMARY && !other.isEmpty()) {
                 if (tryTransfer(contents, slot, player) > 0)
                     playInsertSound(player);
@@ -87,7 +88,7 @@ public class RouterItem extends BundleItem {
             if (initialContents == null) {
                 return false;
             } else {
-                BundleContents.Mutable contents = new BundleContents.Mutable(initialContents);
+                BundleContents.Mutable contents = initialContents.asMutable();
                 if (clickAction == ClickAction.PRIMARY && !other.isEmpty()) {
                     if (slot.allowModification(player) && tryInsert(contents, other) > 0)
                         playInsertSound(player);
@@ -123,7 +124,7 @@ public class RouterItem extends BundleItem {
         if (contents != null && !contents.isEmpty()) {
             Optional<ItemStack> itemStack = removeOneItemFromBundle(bundle, player, contents);
             if (itemStack.isPresent()) {
-                player.drop(itemStack.get(), true);
+                player.drop(itemStack.get(), true, Prediction.PREDICTED);
                 return true;
             } else {
                 return false;
@@ -230,7 +231,7 @@ public class RouterItem extends BundleItem {
     }
 
     private static Optional<ItemStack> removeOneItemFromBundle(final ItemStack self, final Player player, final BundleContents initialContents) {
-        BundleContents.Mutable contents = new BundleContents.Mutable(initialContents);
+        BundleContents.Mutable contents = initialContents.asMutable();
         ItemStack removed = removeOne(contents);
         if (removed != null) {
             playRemoveOneSound(player);
@@ -278,7 +279,7 @@ public class RouterItem extends BundleItem {
 
     public static Result addItemToShulker(ItemStack router, ItemStack stack) {
         BundleContents contents = router.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY);
-        BundleContents.Mutable mutable = new BundleContents.Mutable(contents);
+        BundleContents.Mutable mutable = contents.asMutable();
         int shulkerIndex = RouterItem.getShulkerBoxIndex(mutable.items);
         ItemStack shulker = RouterItem.getShulker(contents.items());
         List<ItemStack> shulkerItems = getShulkerContents(shulker);
@@ -342,8 +343,8 @@ public class RouterItem extends BundleItem {
         List<ItemStack> items = new ArrayList<>(Collections.nCopies(getShulkerSize(shulker), ItemStack.EMPTY));
 
         for (int i = 0; i < getShulkerSize(shulker); i++)
-            if (i < contents.allItemsCopyStream().toList().size())
-                items.set(i, contents.allItemsCopyStream().toList().get(i).copy());
+            if (i < contents.itemCopies().toList().size())
+                items.set(i, contents.itemCopies().toList().get(i).copy());
 
         return items;
     }

@@ -8,16 +8,12 @@ import net.coolsimulations.ForgottenEngineers.item.CompressorItem;
 import net.coolsimulations.ForgottenEngineers.item.FEItems;
 import net.coolsimulations.ForgottenEngineers.item.InductionFurnaceItem;
 import net.coolsimulations.ForgottenEngineers.item.tooltip.*;
-import net.coolsimulations.ForgottenEngineers.network.InductionRecipeSyncPayload;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ItemSlotMouseAction;
 import net.minecraft.client.gui.screens.inventory.tooltip.ClientTooltipComponent;
 import net.minecraft.client.renderer.item.properties.conditional.ConditionalItemModelProperty;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;

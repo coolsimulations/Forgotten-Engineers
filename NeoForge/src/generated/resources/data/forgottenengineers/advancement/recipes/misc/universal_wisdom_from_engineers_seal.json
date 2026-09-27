@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "forgottenengineers:universal_wisdom_from_engineers_seal"
+        "recipes": "forgottenengineers:universal_wisdom_from_engineers_seal"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

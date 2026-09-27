@@ -2,7 +2,6 @@ package net.coolsimulations.ForgottenEngineers;
 
 import net.coolsimulations.ForgottenEngineers.FERegistration.FERegistrationProvider;
 import net.coolsimulations.ForgottenEngineers.FERegistration.FERegistryObject;
-import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
@@ -12,15 +11,14 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.WeatheringCopper;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.function.Supplier;
 
 public class ForgottenEngineersRegistry implements FERegistrationProvider.Factory, FERegistration.IFERegistry {
@@ -92,31 +90,6 @@ public class ForgottenEngineersRegistry implements FERegistrationProvider.Factor
     @Override
     public TagKey<Item> getGunpowders() {
         return ConventionalItemTags.GUNPOWDERS;
-    }
-
-    @Override
-    public Optional<AxeResult> getAxeBlockState(Player player, BlockState originalState) {
-        BlockState fabricStripState = StrippableBlockRegistry.getStrippedBlockState(originalState);
-
-        if (fabricStripState != null && !fabricStripState.is(originalState.getBlock()))
-            return Optional.of(new AxeResult(fabricStripState, AxeType.STRIP));
-
-        Optional<BlockState> vanillaScrapeState = WeatheringCopper.getPrevious(originalState);
-
-        if (vanillaScrapeState.isPresent() && !vanillaScrapeState.get().is(originalState.getBlock()))
-            return Optional.of(new AxeResult(vanillaScrapeState.get(), AxeType.SCRAPE));
-
-        Block vanillaWaxState = HoneycombItem.WAX_OFF_BY_BLOCK.get().get(originalState.getBlock());
-
-        if (vanillaWaxState != null && !vanillaWaxState.defaultBlockState().is(originalState.getBlock()))
-            return Optional.of(new AxeResult(vanillaWaxState.defaultBlockState(), AxeType.WAX_OFF));
-
-        return Optional.empty();
-    }
-
-    @Override
-    public int getFuelTime(ItemStack item, Level level, RecipeType<?> recipeType) {
-        return level.fuelValues().burnDuration(item);
     }
 
     @Override

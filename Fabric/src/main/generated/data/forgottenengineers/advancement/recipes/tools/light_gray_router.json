@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "forgottenengineers:light_gray_router"
+        "recipes": "forgottenengineers:light_gray_router"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

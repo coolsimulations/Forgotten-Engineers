@@ -2,7 +2,6 @@ package net.coolsimulations.ForgottenEngineers.client;
 
 import com.mojang.serialization.DataResult;
 import net.coolsimulations.ForgottenEngineers.ForgottenEngineersCommon;
-import net.coolsimulations.ForgottenEngineers.item.ForgottenEngineersItems;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.renderer.RenderPipelines;

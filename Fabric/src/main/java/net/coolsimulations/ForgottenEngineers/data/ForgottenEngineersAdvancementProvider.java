@@ -17,6 +17,6 @@ public class ForgottenEngineersAdvancementProvider extends FabricAdvancementProv
 
     @Override
     public void generateAdvancement(HolderLookup.@NonNull Provider registries, @NonNull Consumer<AdvancementHolder> consumer) {
-        FEAdvancements.generateAdvancements(registries, (identifier, advancement) -> advancement.save(consumer, identifier));
+        FEAdvancements.generateAdvancements((identifier, advancement) -> advancement.save(consumer, identifier));
     }
 }

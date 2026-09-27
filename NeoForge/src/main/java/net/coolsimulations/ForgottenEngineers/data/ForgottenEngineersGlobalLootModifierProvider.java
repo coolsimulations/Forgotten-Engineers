@@ -5,13 +5,13 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.coolsimulations.ForgottenEngineers.ForgottenEngineersCommon;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
-import net.minecraft.world.level.storage.loot.predicates.AnyOfCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.neoforged.neoforge.common.data.GlobalLootModifierProvider;
 import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
@@ -19,6 +19,7 @@ import net.neoforged.neoforge.common.loot.LootModifier;
 import net.neoforged.neoforge.common.loot.LootTableIdCondition;
 import org.jspecify.annotations.NonNull;
 
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public class ForgottenEngineersGlobalLootModifierProvider extends GlobalLootModifierProvider {
@@ -34,9 +35,7 @@ public class ForgottenEngineersGlobalLootModifierProvider extends GlobalLootModi
                     .map(LootTableIdCondition::builder)
                     .toArray(LootItemCondition.Builder[]::new);
 
-            this.add(wisdomLoot.name(), new AddItemModifier(new LootItemCondition[] {
-                    wisdomLoot.lootTables().size() == 1 ? new LootTableIdCondition.Builder(wisdomLoot.lootTables().getFirst()).build() : AnyOfCondition.anyOf(builders).build()
-            }, wisdomLoot.item(), wisdomLoot.weight()));
+            this.add(wisdomLoot.name(), new AddItemModifier(Optional.of(Holder.direct(new LootTableIdCondition.Builder(wisdomLoot.lootTables().getFirst()).build())), wisdomLoot.item(), wisdomLoot.weight()));
         }));
 
         FELoot.generateArcheologyLoot((wisdomLoot -> {
@@ -44,9 +43,7 @@ public class ForgottenEngineersGlobalLootModifierProvider extends GlobalLootModi
                     .map(LootTableIdCondition::builder)
                     .toArray(LootItemCondition.Builder[]::new);
 
-            this.add(wisdomLoot.name(), new AddSuspiciousItemModifier(new LootItemCondition[] {
-                    wisdomLoot.lootTables().size() == 1 ? new LootTableIdCondition.Builder(wisdomLoot.lootTables().getFirst()).build() : AnyOfCondition.anyOf(builders).build()
-            }, wisdomLoot.item(), wisdomLoot.weight(), wisdomLoot.totalWeight()));
+            this.add(wisdomLoot.name(), new AddSuspiciousItemModifier(Optional.of(Holder.direct(new LootTableIdCondition.Builder(wisdomLoot.lootTables().getFirst()).build())), wisdomLoot.item(), wisdomLoot.weight(), wisdomLoot.totalWeight()));
         }));
     }
 
@@ -59,7 +56,7 @@ public class ForgottenEngineersGlobalLootModifierProvider extends GlobalLootModi
         private final Item item;
         private final int weight;
 
-        public AddItemModifier(LootItemCondition[] conditionsIn, Item item, int weight) {
+        public AddItemModifier(Optional<Holder<LootItemCondition>> conditionsIn, Item item, int weight) {
             super(conditionsIn, 1000);
             this.item = item;
             this.weight = weight;
@@ -67,8 +64,8 @@ public class ForgottenEngineersGlobalLootModifierProvider extends GlobalLootModi
 
         @Override
         protected @NonNull ObjectArrayList<ItemStack> doApply(@NonNull ObjectArrayList<ItemStack> generatedLoot, @NonNull LootContext lootContext) {
-            for (LootItemCondition condition : this.conditions) {
-                if(!condition.test(lootContext)) {
+            if (this.condition.isPresent()) {
+                if(!condition.get().value().test(lootContext)) {
                     return generatedLoot;
                 }
             }
@@ -95,7 +92,7 @@ public class ForgottenEngineersGlobalLootModifierProvider extends GlobalLootModi
         private final int weight;
         private final int totalWeight;
 
-        public AddSuspiciousItemModifier(LootItemCondition[] conditionsIn, Item item, int weight, int totalWeight) {
+        public AddSuspiciousItemModifier(Optional<Holder<LootItemCondition>> conditionsIn, Item item, int weight, int totalWeight) {
             super(conditionsIn, 1000);
             this.item = item;
             this.weight = weight;
@@ -104,8 +101,8 @@ public class ForgottenEngineersGlobalLootModifierProvider extends GlobalLootModi
 
         @Override
         protected @NonNull ObjectArrayList<ItemStack> doApply(@NonNull ObjectArrayList<ItemStack> generatedLoot, @NonNull LootContext lootContext) {
-            for (LootItemCondition condition : this.conditions) {
-                if(!condition.test(lootContext)) {
+            if (this.condition.isPresent()) {
+                if(!condition.get().value().test(lootContext)) {
                     return generatedLoot;
                 }
             }

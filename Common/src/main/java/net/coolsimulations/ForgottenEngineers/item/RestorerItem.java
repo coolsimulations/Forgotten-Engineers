@@ -81,7 +81,7 @@ public class RestorerItem extends StorageDeviceItem {
     protected void removeMaterialFromRestorer(ItemStack restorer, ItemStack material) {
         BundleContents contents = restorer.get(DataComponents.BUNDLE_CONTENTS);
         if (contents != null && !contents.isEmpty()) {
-            List<ItemStackTemplate> newList = new ArrayList<>(contents.itemCopyStream().map(ItemStackTemplate::fromStack).toList());
+            List<ItemStackTemplate> newList = new ArrayList<>(contents.itemCopies().map(ItemStackTemplate::fromStack).toList());
             for (int i = 0; i < contents.size(); i++) {
                 ItemStack restorerItem = newList.get(i).create();
                 if (restorerItem.is(material.getItem())) {

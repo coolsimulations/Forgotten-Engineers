@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "forgottenengineers:compression_wisdom"
+        "recipes": "forgottenengineers:compression_wisdom"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

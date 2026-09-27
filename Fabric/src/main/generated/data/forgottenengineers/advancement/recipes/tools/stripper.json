@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "forgottenengineers:stripper"
+        "recipes": "forgottenengineers:stripper"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

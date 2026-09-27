@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "forgottenengineers:induction_furnace"
+        "recipes": "forgottenengineers:induction_furnace"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

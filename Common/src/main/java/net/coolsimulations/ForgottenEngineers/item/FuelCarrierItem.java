@@ -56,7 +56,7 @@ public class FuelCarrierItem extends StorageDeviceItem {
             if (carrier.isEmpty()) continue;
 
             BundleContents contents = carrier.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY);
-            BundleContents.Mutable mutable = new BundleContents.Mutable(contents);
+            BundleContents.Mutable mutable = contents.asMutable();
 
             if (option.fuelIndex() < 0 || option.fuelIndex() >= mutable.items.size()) continue;
 
@@ -115,6 +115,6 @@ public class FuelCarrierItem extends StorageDeviceItem {
     protected boolean checkStackIsValidOrEmpty(Player player, ItemStack stack) {
         if (stack.isEmpty()) return true;
 
-        return !stack.is(FETags.FUEL_CARRIER_IGNORE_ITEMS) && FEServices.REGISTRY.getFuelTime(stack, player.level(), null) > 0;
+        return !stack.is(FETags.FUEL_CARRIER_IGNORE_ITEMS) && stack.has(DataComponents.COOKING_FUEL);
     }
 }

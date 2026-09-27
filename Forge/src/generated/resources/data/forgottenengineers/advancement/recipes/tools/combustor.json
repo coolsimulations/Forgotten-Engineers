@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "forgottenengineers:combustor"
+        "recipes": "forgottenengineers:combustor"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

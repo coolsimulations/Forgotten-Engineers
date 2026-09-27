@@ -2,17 +2,22 @@ package net.coolsimulations.ForgottenEngineers;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CookingFuel;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ResolvableInt;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -31,19 +36,17 @@ public class FERegistration {
 
         TagKey<Item> getGunpowders();
 
-        Optional<AxeResult> getAxeBlockState(Player player, BlockState originalState);
+        default int getFuelTime(ItemStack item, Level level, RecipeType<?> recipeType) {
+            if (!item.has(DataComponents.COOKING_FUEL))
+                return 0;
 
-        int getFuelTime(ItemStack item, Level level, RecipeType<?> recipeType);
+            if (level instanceof ServerLevel serverLevel)
+                return ResolvableInt.getFromItem(item, DataComponents.COOKING_FUEL, CookingFuel::burnTime, new LootContext.Builder(new LootParams.Builder(serverLevel).create(LootContextParamSets.EMPTY)).create(Optional.empty()), 0);
+
+            return 0;
+        }
 
         PlatformType getPlatformType();
-
-        record AxeResult(BlockState resultState, AxeType type) {}
-
-        enum AxeType {
-            STRIP,
-            SCRAPE,
-            WAX_OFF
-        }
     }
 
     public interface FERegistryObject<T> extends Supplier<T> {

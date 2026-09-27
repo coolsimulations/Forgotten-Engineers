@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "forgottenengineers:fuel_carrier"
+        "recipes": "forgottenengineers:fuel_carrier"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

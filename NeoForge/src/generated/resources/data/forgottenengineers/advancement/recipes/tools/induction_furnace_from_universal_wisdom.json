@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "forgottenengineers:induction_furnace_from_universal_wisdom"
+        "recipes": "forgottenengineers:induction_furnace_from_universal_wisdom"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

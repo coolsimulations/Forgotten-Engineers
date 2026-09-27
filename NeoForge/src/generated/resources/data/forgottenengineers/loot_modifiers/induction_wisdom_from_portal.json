@@ -1,11 +1,9 @@
 {
   "type": "forgottenengineers:add_item",
-  "conditions": [
-    {
-      "condition": "neoforge:loot_table_id",
-      "loot_table_id": "minecraft:chests/ruined_portal"
-    }
-  ],
+  "condition": {
+    "type": "neoforge:loot_table_id",
+    "loot_table_id": "minecraft:chests/ruined_portal"
+  },
   "item": "forgottenengineers:induction_wisdom",
   "weight": 6
 }

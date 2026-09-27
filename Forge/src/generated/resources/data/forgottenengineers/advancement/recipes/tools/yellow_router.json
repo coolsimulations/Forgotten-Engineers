@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "forgottenengineers:yellow_router"
+        "recipes": "forgottenengineers:yellow_router"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

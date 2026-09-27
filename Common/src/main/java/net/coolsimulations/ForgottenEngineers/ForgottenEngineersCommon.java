@@ -11,6 +11,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.stats.Stats;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
@@ -21,6 +22,7 @@ import net.minecraft.world.item.component.BundleContents;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -142,7 +144,7 @@ public class ForgottenEngineersCommon {
     }
 
     public static boolean matchesDeviceFilter(ItemStack device, ItemStack stack, boolean router) {
-        BundleContents.Mutable contents = new BundleContents.Mutable(device.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY));
+        BundleContents.Mutable contents = device.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY).asMutable();
 
         for (ItemInstance filter : router ? RouterItem.getFilterItems(contents.items) : contents.items)
             if (ItemStack.isSameItem((ItemStack)filter, stack)) return true;
@@ -157,7 +159,7 @@ public class ForgottenEngineersCommon {
 
     private static boolean canDeviceAccept(ItemStack compressor, ItemStack stack, int amount) {
         BundleContents contents = compressor.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY);
-        BundleContents.Mutable mutable = new BundleContents.Mutable(contents);
+        BundleContents.Mutable mutable = contents.asMutable();
 
         int existingCount = mutable.items.stream().filter(existing -> ItemStack.isSameItemSameComponents(existing, stack)).mapToInt(ItemInstance::count).sum();
 
@@ -178,11 +180,11 @@ public class ForgottenEngineersCommon {
                 remaining = player.getEnderChestInventory().addItem(remaining);
                 if (!remaining.isEmpty()) {
                     player.awardStat(Stats.ITEM_PICKED_UP.get(remaining.getItem()), remaining.getCount() - addedToEnder);
-                    player.getInventory().placeItemBackInInventory(remaining);
+                    player.getInventory().placeItemBackInInventory(remaining, Prediction.SERVER_ONLY);
                 }
             } else {
                 player.awardStat(Stats.ITEM_PICKED_UP.get(remaining.getItem()), remaining.getCount());
-                player.getInventory().placeItemBackInInventory(remaining);
+                player.getInventory().placeItemBackInInventory(remaining, Prediction.SERVER_ONLY);
             }
         }
     }
@@ -274,12 +276,12 @@ public class ForgottenEngineersCommon {
                 if (!matchesDeviceFilter(stripper, workingStack, false)) continue;
                 if (!(workingStack.getItem() instanceof BlockItem blockItem)) continue;
 
-                Optional<FERegistration.IFERegistry.AxeResult> axeResult = FEServices.REGISTRY.getAxeBlockState(player, blockItem.getBlock().defaultBlockState());
+                Optional<BlockState> axeResult = StripperItem.getAxeBlockState(player, blockItem.getBlock().defaultBlockState());
 
                 if (axeResult.isEmpty()) continue;
 
                 ItemStack before = workingStack.copy();
-                ItemStack result = workingStack.transmuteCopy(axeResult.get().resultState().getBlock());
+                ItemStack result = workingStack.transmuteCopy(axeResult.get().getBlock());
 
                 if (result.is(workingStack.getItem())) continue;
 
@@ -314,7 +316,7 @@ public class ForgottenEngineersCommon {
             if (compressor.isEmpty()) continue;
             if (!matchesDeviceFilter(compressor, enderStack.stack(), false)) continue;
 
-            BundleContents.Mutable contents = new BundleContents.Mutable(compressor.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY));
+            BundleContents.Mutable contents = compressor.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY).asMutable();
             Optional<CompressorItem.CompressorRecipe> recipe = CompressorItem.getRecipeFromInput(contents, enderStack.stack());
 
             if (recipe.isEmpty()) continue;
@@ -367,7 +369,7 @@ public class ForgottenEngineersCommon {
                 if (compressor.isEmpty()) continue;
                 if (!matchesDeviceFilter(compressor, workingStack, false)) continue;
 
-                BundleContents.Mutable contents = new BundleContents.Mutable(compressor.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY));
+                BundleContents.Mutable contents = compressor.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY).asMutable();
                 Optional<CompressorItem.CompressorRecipe> recipe = CompressorItem.getRecipeFromInput(contents, workingStack);
 
                 if (recipe.isEmpty()) continue;
@@ -420,7 +422,7 @@ public class ForgottenEngineersCommon {
             if (inductionFurnace.isEmpty()) continue;
             if (!matchesDeviceFilter(inductionFurnace, enderStack.stack(), false)) continue;
 
-            BundleContents.Mutable contents = new BundleContents.Mutable(inductionFurnace.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY));
+            BundleContents.Mutable contents = inductionFurnace.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY).asMutable();
             InductionFurnaceItem.InductionRecipe recipe = InductionFurnaceItem.INDUCTION_RECIPES.get(enderStack.stack().getItem());
 
             if (!canDeviceAccept(inductionFurnace, enderStack.stack(), 1)) continue;
@@ -472,7 +474,7 @@ public class ForgottenEngineersCommon {
                 if (inductionFurnace.isEmpty()) continue;
                 if (!matchesDeviceFilter(inductionFurnace, workingStack, false)) continue;
 
-                BundleContents.Mutable contents = new BundleContents.Mutable(inductionFurnace.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY));
+                BundleContents.Mutable contents = inductionFurnace.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY).asMutable();
                 InductionFurnaceItem.InductionRecipe recipe = InductionFurnaceItem.INDUCTION_RECIPES.get(workingStack.getItem());
 
                 if (!canDeviceAccept(inductionFurnace, workingStack, 1)) continue;

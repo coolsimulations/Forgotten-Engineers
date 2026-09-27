@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "forgottenengineers:red_router"
+        "recipes": "forgottenengineers:red_router"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "forgottenengineers:restoration_wisdom"
+        "recipes": "forgottenengineers:restoration_wisdom"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -4,6 +4,7 @@ import net.coolsimulations.ForgottenEngineers.data.FETags;
 import net.coolsimulations.ForgottenEngineers.sounds.FESounds;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.util.ARGB;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickAction;
@@ -54,7 +55,7 @@ public class StorageDeviceItem extends BundleItem {
         if (contents != null && !contents.isEmpty()) {
             Optional<ItemStack> itemStack = removeOneItemFromBundle(bundle, player, contents);
             if (itemStack.isPresent()) {
-                player.drop(itemStack.get(), true);
+                player.drop(itemStack.get(), true, Prediction.PREDICTED);
                 return true;
             } else {
                 return false;
@@ -65,7 +66,7 @@ public class StorageDeviceItem extends BundleItem {
     }
 
     private static Optional<ItemStack> removeOneItemFromBundle(final ItemStack self, final Player player, final BundleContents initialContents) {
-        BundleContents.Mutable contents = new BundleContents.Mutable(initialContents);
+        BundleContents.Mutable contents = initialContents.asMutable();
         ItemStack removed = contents.removeOne();
         if (removed != null) {
             if (self.is(FEItems.RESTORER))

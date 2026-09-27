@@ -14,7 +14,7 @@ import java.util.function.BiConsumer;
 
 public class FEAdvancements {
 
-    public static void generateAdvancements(HolderLookup.Provider registries, BiConsumer<Identifier, Advancement.Builder> advancements) {
-        advancements.accept(Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "adventure/" + ForgottenEngineersItems.ENGINEERS_SEAL_ID.getPath()), Advancement.Builder.advancement().parent(Identifier.withDefaultNamespace("adventure/root")).display(FEItems.ENGINEERS_SEAL, Component.translatable("advancements."  + ForgottenEngineersCommon.MOD_ID + ".adventure." + ForgottenEngineersItems.ENGINEERS_SEAL_ID.getPath() + ".title"), Component.translatable("advancements."  + ForgottenEngineersCommon.MOD_ID + ".adventure." + ForgottenEngineersItems.ENGINEERS_SEAL_ID.getPath() + ".description"), null, AdvancementType.TASK, true, true, false).addCriterion(ForgottenEngineersItems.ENGINEERS_SEAL_ID.getPath(), InventoryChangeTrigger.TriggerInstance.hasItems(FEItems.ENGINEERS_SEAL)));
+    public static void generateAdvancements(BiConsumer<Identifier, Advancement.Builder> advancements) {
+        advancements.accept(Identifier.fromNamespaceAndPath(ForgottenEngineersCommon.MOD_ID, "adventure/" + ForgottenEngineersItems.ENGINEERS_SEAL_ID.getPath()), Advancement.Builder.advancement().parent(Identifier.withDefaultNamespace("adventure/root")).display(FEItems.ENGINEERS_SEAL, Component.translatable("advancements."  + ForgottenEngineersCommon.MOD_ID + ".adventure." + ForgottenEngineersItems.ENGINEERS_SEAL_ID.getPath() + ".title"), Component.translatable("advancements."  + ForgottenEngineersCommon.MOD_ID + ".adventure." + ForgottenEngineersItems.ENGINEERS_SEAL_ID.getPath() + ".description"), AdvancementType.TASK, true, true, false).addCriterion(ForgottenEngineersItems.ENGINEERS_SEAL_ID.getPath(), InventoryChangeTrigger.TriggerInstance.hasItems(FEItems.ENGINEERS_SEAL)));
     }
 }

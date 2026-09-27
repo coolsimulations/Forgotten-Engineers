@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "forgottenengineers:compressor_from_universal_wisdom"
+        "recipes": "forgottenengineers:compressor_from_universal_wisdom"
       },
       "trigger": "minecraft:recipe_unlocked"
     },

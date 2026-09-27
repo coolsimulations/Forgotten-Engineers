@@ -1,11 +1,9 @@
 {
   "type": "forgottenengineers:add_item",
-  "conditions": [
-    {
-      "condition": "neoforge:loot_table_id",
-      "loot_table_id": "minecraft:chests/abandoned_mineshaft"
-    }
-  ],
+  "condition": {
+    "type": "neoforge:loot_table_id",
+    "loot_table_id": "minecraft:chests/abandoned_mineshaft"
+  },
   "item": "forgottenengineers:restoration_wisdom",
   "weight": 6
 }

@@ -1,12 +1,13 @@
 package net.coolsimulations.ForgottenEngineers.data;
 
+import net.coolsimulations.ForgottenEngineers.ForgottenEngineersCommon;
 import net.coolsimulations.ForgottenEngineers.event.FERenderEvents;
 import net.minecraft.client.renderer.item.properties.conditional.ConditionalItemModelProperties;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraftforge.common.data.RegistryDataBuilder;
 import net.minecraftforge.data.event.GatherDataEvent;
-
-import java.util.List;
 
 public class ForgottenEngineersDataGeneration {
 
@@ -20,9 +21,8 @@ public class ForgottenEngineersDataGeneration {
         gen.addProvider(event.includeClient(), new ForgottenEngineersSoundProvider(packOutput, event.getExistingFileHelper()));
         gen.addProvider(event.includeClient(), new ForgottenEngineersItemTagProvider(packOutput, event.getLookupProvider(), event.getExistingFileHelper()));
         gen.addProvider(event.includeClient(), new ForgottenEngineersBlockTagProvider(packOutput, event.getLookupProvider(), event.getExistingFileHelper()));
-        gen.addProvider(event.includeClient(), new ForgottenEngineersRecipeProvider(packOutput, event.getLookupProvider()));
+        gen.addProvider(event.includeServer(), RegistryDataBuilder.of().modid(ForgottenEngineersCommon.MOD_ID).reloadable(set -> set.add(ForgottenEngineersRecipeProvider.create()).add(Registries.ADVANCEMENT, ForgottenEngineersAdvancementProvider.create())).reloadableGenerator(packOutput));
         gen.addProvider(event.includeClient(), new ForgottenEngineersGlobalLootModifierProvider(packOutput, event.getLookupProvider()));
-        gen.addProvider(event.includeClient(), new ForgottenEngineersAdvancementProvider(packOutput, event.getLookupProvider(), event.getExistingFileHelper(), List.of(new ForgottenEngineersAdvancementProvider.AdvancementGenerator())));
 
         gen.addProvider(event.includeClient(), new ForgottenEngineersLanguageProvider.EnglishProvider(packOutput));
         gen.addProvider(event.includeClient(), new ForgottenEngineersLanguageProvider.EnglishCommonwealthProvider(packOutput, "en_au"));

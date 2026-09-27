@@ -2,16 +2,8 @@ package net.coolsimulations.ForgottenEngineers.sounds;
 
 import net.coolsimulations.ForgottenEngineers.FEServices;
 import net.coolsimulations.ForgottenEngineers.ForgottenEngineersCommon;
-import net.coolsimulations.ForgottenEngineers.data.FELoot;
-import net.coolsimulations.ForgottenEngineers.item.FEItems;
-import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 
-import java.util.List;
-import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 public class FESounds {

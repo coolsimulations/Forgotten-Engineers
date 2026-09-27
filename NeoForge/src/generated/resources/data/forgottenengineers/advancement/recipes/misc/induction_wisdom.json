@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "forgottenengineers:induction_wisdom"
+        "recipes": "forgottenengineers:induction_wisdom"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

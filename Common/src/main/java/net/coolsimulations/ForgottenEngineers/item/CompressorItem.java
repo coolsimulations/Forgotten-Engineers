@@ -122,7 +122,7 @@ public class CompressorItem extends FilterDeviceItem {
                 player.awardStat(Stats.ITEM_PICKED_UP.get(filter), amountLeft);
 
             BundleContents contents = compressor.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY);
-            BundleContents.Mutable mutable = new BundleContents.Mutable(contents);
+            BundleContents.Mutable mutable = contents.asMutable();
 
             Optional<ItemStack> compressorFilter = mutable.items.stream().filter(item -> item.is(filter)).findFirst();
             if (compressorFilter.isPresent()) {
@@ -151,7 +151,7 @@ public class CompressorItem extends FilterDeviceItem {
 
     private static Optional<ForgottenEngineersCommon.RecipeResult> processStack(CompressorRecipe recipe, ItemStack compressor, ItemStack stack) {
         BundleContents contents = compressor.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY);
-        BundleContents.Mutable mutable = new BundleContents.Mutable(contents);
+        BundleContents.Mutable mutable = contents.asMutable();
 
         Optional<ForgottenEngineersCommon.DeviceResult> result = tryCompress(recipe, stack);
 

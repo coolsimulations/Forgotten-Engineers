@@ -1,27 +1,28 @@
 package net.coolsimulations.ForgottenEngineers.data;
 
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.data.PackOutput;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.core.registries.SingleRegistryBootstrap;
 import net.minecraft.data.advancements.AdvancementProvider;
 import net.minecraft.data.advancements.AdvancementSubProvider;
-import org.jspecify.annotations.NonNull;
+import net.minecraft.data.worldgen.BootstrapContext;
 
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
 
-public class ForgottenEngineersAdvancementProvider extends AdvancementProvider {
+public class ForgottenEngineersAdvancementProvider  {
 
-    public ForgottenEngineersAdvancementProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, List<AdvancementSubProvider> subProviders) {
-        super(output, registries, subProviders);
+    public static SingleRegistryBootstrap<Advancement> create() {
+        return new AdvancementProvider(List.of(AdvancementGenerator::new));
     }
 
-    public static class AdvancementGenerator implements AdvancementSubProvider {
+    public static class AdvancementGenerator extends AdvancementSubProvider {
+
+        protected AdvancementGenerator(BootstrapContext<Advancement> output) {
+            super(output);
+        }
 
         @Override
-        public void generate(HolderLookup.@NonNull Provider registries, @NonNull Consumer<AdvancementHolder> consumer) {
-            FEAdvancements.generateAdvancements(registries, (identifier, advancement) -> advancement.save(consumer, identifier));
+        public void generate() {
+            FEAdvancements.generateAdvancements((identifier, advancement) -> advancement.save(this.output, identifier));
         }
     }
 }

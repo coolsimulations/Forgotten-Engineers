@@ -69,7 +69,7 @@ public class CombustorItem extends StorageDeviceItem {
 
     public void consumeFuel(ItemStack combustor, boolean isLarge) {
         BundleContents contents = combustor.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY);
-        BundleContents.Mutable mutable = new BundleContents.Mutable(contents);
+        BundleContents.Mutable mutable = contents.asMutable();
         mutable.items.stream().filter(stack -> stack.is(Items.BLAZE_POWDER)).findFirst().ifPresent(stack -> stack.shrink(1));
         mutable.items.stream().filter(stack -> stack.is(FEServices.REGISTRY.getGunpowders())).findFirst().ifPresent(stack -> stack.shrink(1));
         if (isLarge)
@@ -81,14 +81,14 @@ public class CombustorItem extends StorageDeviceItem {
     public static boolean hasFuelForLarge(ItemStack combustor) {
         BundleContents contents = combustor.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY);
         if (!contents.isEmpty())
-            return contents.itemCopyStream().anyMatch(stack -> stack.is(ItemTags.COALS));
+            return contents.itemCopies().anyMatch(stack -> stack.is(ItemTags.COALS));
         return false;
     }
 
     public static boolean hasFuelForShot(ItemStack combustor) {
         BundleContents contents = combustor.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY);
         if (!contents.isEmpty())
-            return contents.itemCopyStream().anyMatch(stack -> stack.is(Items.BLAZE_POWDER)) && contents.itemCopyStream().anyMatch(stack -> stack.is(FEServices.REGISTRY.getGunpowders()));
+            return contents.itemCopies().anyMatch(stack -> stack.is(Items.BLAZE_POWDER)) && contents.itemCopies().anyMatch(stack -> stack.is(FEServices.REGISTRY.getGunpowders()));
         return false;
     }
 

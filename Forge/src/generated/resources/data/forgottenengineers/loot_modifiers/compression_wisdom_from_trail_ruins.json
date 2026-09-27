@@ -2,7 +2,7 @@
   "type": "forgottenengineers:add_suspicious_item",
   "conditions": [
     {
-      "condition": "forge:loot_table_id",
+      "type": "forge:loot_table_id",
       "loot_table_id": "minecraft:archaeology/trail_ruins_rare"
     }
   ],

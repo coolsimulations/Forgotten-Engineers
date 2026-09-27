@@ -8,7 +8,6 @@ import net.coolsimulations.ForgottenEngineers.item.ForgottenEngineersItems;
 import net.coolsimulations.ForgottenEngineers.item.InductionFurnaceItem;
 import net.coolsimulations.ForgottenEngineers.loot.ForgottenEngineersLootModifiers;
 import net.coolsimulations.ForgottenEngineers.network.CompressorRecipeSyncPacket;
-import net.coolsimulations.ForgottenEngineers.network.CompressorRecipeSyncPayload;
 import net.coolsimulations.ForgottenEngineers.network.FENetwork;
 import net.coolsimulations.ForgottenEngineers.network.InductionRecipeSyncPacket;
 import net.minecraft.core.registries.BuiltInRegistries;

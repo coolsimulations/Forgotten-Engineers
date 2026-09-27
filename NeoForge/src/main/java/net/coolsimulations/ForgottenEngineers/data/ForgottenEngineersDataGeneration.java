@@ -1,8 +1,8 @@
 package net.coolsimulations.ForgottenEngineers.data;
 
+import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.registries.Registries;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
-
-import java.util.List;
 
 public class ForgottenEngineersDataGeneration {
 
@@ -11,9 +11,8 @@ public class ForgottenEngineersDataGeneration {
         event.createProvider(ForgottenEngineersSoundProvider::new);
         event.createProvider(ForgottenEngineersItemTagProvider::new);
         event.createProvider(ForgottenEngineersBlockTagProvider::new);
-        event.createProvider(ForgottenEngineersRecipeProvider::new);
+        event.createReloadableRegistryObjects(new RegistrySetBuilder().add(ForgottenEngineersRecipeProvider.create()).add(Registries.ADVANCEMENT, ForgottenEngineersAdvancementProvider.create()));
         event.createProvider(ForgottenEngineersGlobalLootModifierProvider::new);
-        event.createProvider(output -> new ForgottenEngineersAdvancementProvider(output, event.getLookupProvider(), List.of(new ForgottenEngineersAdvancementProvider.AdvancementGenerator())));
 
         event.createProvider(ForgottenEngineersLanguageProvider.EnglishProvider::new);
         event.createProvider(output -> new ForgottenEngineersLanguageProvider.EnglishCommonwealthProvider(output, "en_au"));

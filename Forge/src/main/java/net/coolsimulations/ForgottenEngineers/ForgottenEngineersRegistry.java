@@ -2,26 +2,27 @@ package net.coolsimulations.ForgottenEngineers;
 
 import net.coolsimulations.ForgottenEngineers.FERegistration.FERegistrationProvider;
 import net.coolsimulations.ForgottenEngineers.FERegistration.FERegistryObject;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
-import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.CookingFuel;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.WeatheringCopper;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ResolvableInt;
 import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.javafmlmod.FMLModContainer;
 import net.minecraftforge.registries.DeferredRegister;
@@ -117,37 +118,8 @@ public class ForgottenEngineersRegistry implements FERegistrationProvider.Factor
     }
 
     @Override
-    public Optional<AxeResult> getAxeBlockState(Player player, BlockState originalState) {
-        BlockState forgeStripState = originalState.getToolModifiedState(new UseOnContext(player, player.getUsedItemHand(), new BlockHitResult(Vec3.ZERO, player.getDirection(), BlockPos.ZERO, false)), ToolActions.AXE_STRIP, true);
-        BlockState vanillaStripState = AxeItem.getAxeStrippingState(originalState);
-
-        if (forgeStripState != null && !forgeStripState.is(originalState.getBlock()))
-            return Optional.of(new AxeResult(forgeStripState, AxeType.STRIP));
-        else if (vanillaStripState != null && !vanillaStripState.is(originalState.getBlock()))
-            return Optional.of(new AxeResult(vanillaStripState, AxeType.STRIP));
-
-        BlockState forgeScrapeState = originalState.getToolModifiedState(new UseOnContext(player, player.getUsedItemHand(), new BlockHitResult(Vec3.ZERO, player.getDirection(), BlockPos.ZERO, false)), ToolActions.AXE_SCRAPE, true);
-        Optional<BlockState> vanillaScrapeState = WeatheringCopper.getPrevious(originalState);
-
-        if (forgeScrapeState != null && !forgeScrapeState.is(originalState.getBlock()))
-            return Optional.of(new AxeResult(forgeScrapeState, AxeType.SCRAPE));
-        else if (vanillaScrapeState.isPresent() && !vanillaScrapeState.get().is(originalState.getBlock()))
-            return Optional.of(new AxeResult(vanillaScrapeState.get(), AxeType.SCRAPE));
-
-        BlockState forgeWaxState = originalState.getToolModifiedState(new UseOnContext(player, player.getUsedItemHand(), new BlockHitResult(Vec3.ZERO, player.getDirection(), BlockPos.ZERO, false)), ToolActions.AXE_WAX_OFF, true);
-        Block vanillaWaxState = HoneycombItem.WAX_OFF_BY_BLOCK.get().get(originalState.getBlock());
-
-        if (forgeWaxState != null && !forgeWaxState.is(originalState.getBlock()))
-            return Optional.of(new AxeResult(forgeWaxState, AxeType.WAX_OFF));
-        else if (vanillaWaxState != null && !vanillaWaxState.defaultBlockState().is(originalState.getBlock()))
-            return Optional.of(new AxeResult(vanillaWaxState.defaultBlockState(), AxeType.WAX_OFF));
-
-        return Optional.empty();
-    }
-
-    @Override
     public int getFuelTime(ItemStack item, Level level, RecipeType<?> recipeType) {
-        return level.fuelValues().burnDuration(item, recipeType);
+        return net.minecraftforge.event.ForgeEventFactory.getItemBurnTime(item, FERegistration.IFERegistry.super.getFuelTime(item, level, recipeType), recipeType);
     }
 
     @Override

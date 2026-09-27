@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "forgottenengineers:magenta_router"
+        "recipes": "forgottenengineers:magenta_router"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

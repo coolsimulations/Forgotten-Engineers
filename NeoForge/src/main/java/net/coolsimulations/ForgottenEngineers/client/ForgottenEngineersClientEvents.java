@@ -4,12 +4,8 @@ import net.coolsimulations.ForgottenEngineers.ForgottenEngineersClientCommon;
 import net.coolsimulations.ForgottenEngineers.ForgottenEngineersCommon;
 import net.coolsimulations.ForgottenEngineers.event.FENetworkEvents;
 import net.coolsimulations.ForgottenEngineers.event.FERenderEvents;
-import net.coolsimulations.ForgottenEngineers.item.InductionFurnaceItem;
 import net.coolsimulations.ForgottenEngineers.network.CompressorRecipeSyncPayload;
 import net.coolsimulations.ForgottenEngineers.network.InductionRecipeSyncPayload;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -40,15 +36,11 @@ public class ForgottenEngineersClientEvents {
     }
 
     private static void handleInductionRecipes(InductionRecipeSyncPayload payload, IPayloadContext context) {
-        context.enqueueWork(() -> {
-            ForgottenEngineersClientCommon.handleInductionRecipes(payload);
-        });
+        context.enqueueWork(() -> ForgottenEngineersClientCommon.handleInductionRecipes(payload));
     }
 
     private static void handleCompressorRecipes(CompressorRecipeSyncPayload payload, IPayloadContext context) {
-        context.enqueueWork(() -> {
-            ForgottenEngineersClientCommon.handleCompressorRecipes(payload);
-        });
+        context.enqueueWork(() -> ForgottenEngineersClientCommon.handleCompressorRecipes(payload));
     }
 
     @SubscribeEvent

@@ -1,6 +1,5 @@
 package net.coolsimulations.ForgottenEngineers;
 
-import net.coolsimulations.ForgottenEngineers.client.FEClientEvents;
 import net.coolsimulations.ForgottenEngineers.event.FENetworkEvents;
 import net.coolsimulations.ForgottenEngineers.event.FERenderEvents;
 import net.coolsimulations.ForgottenEngineers.network.CompressorRecipeSyncPayload;
@@ -9,7 +8,6 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.rendering.v1.ClientTooltipComponentCallback;
-import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.minecraft.client.renderer.item.properties.conditional.ConditionalItemModelProperties;
 
 public class ForgottenEngineersClient implements ClientModInitializer {

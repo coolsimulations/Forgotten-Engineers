@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "forgottenengineers:universal_wisdom"
+        "recipes": "forgottenengineers:universal_wisdom"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
