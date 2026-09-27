@@ -9,6 +9,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
@@ -31,20 +32,22 @@ public class ForgottenEngineersGlobalLootModifierProvider extends GlobalLootModi
     @Override
     protected void start() {
         FELoot.generateChestLoot((wisdomLoot -> {
-            LootItemCondition.Builder[] builders = wisdomLoot.lootTables().stream()
-                    .map(LootTableIdCondition::builder)
-                    .toArray(LootItemCondition.Builder[]::new);
-
-            this.add(wisdomLoot.name(), new AddItemModifier(Optional.of(Holder.direct(new LootTableIdCondition.Builder(wisdomLoot.lootTables().getFirst()).build())), wisdomLoot.item(), wisdomLoot.weight()));
-        }));
+            for (int i = 0; i < wisdomLoot.lootTables().size(); ++i) {
+                LootItemCondition.Builder[] builders = wisdomLoot.lootTables().stream()
+                        .map(LootTableIdCondition::builder)
+                        .toArray(LootItemCondition.Builder[]::new);
+                String lootName = wisdomLoot.lootTables().get(i).getPath();
+                this.add(wisdomLoot.lootTables().size() > 1 ? wisdomLoot.name().replaceAll("_[^_]*$", "_" + lootName.substring(lootName.lastIndexOf('/') + 1)) : wisdomLoot.name(), new AddItemModifier(Optional.of(Holder.direct(new LootTableIdCondition.Builder(wisdomLoot.lootTables().get(i)).build())), wisdomLoot.item(), wisdomLoot.weight()));
+            }}));
 
         FELoot.generateArcheologyLoot((wisdomLoot -> {
-            LootItemCondition.Builder[] builders = wisdomLoot.lootTables().stream()
-                    .map(LootTableIdCondition::builder)
-                    .toArray(LootItemCondition.Builder[]::new);
-
-            this.add(wisdomLoot.name(), new AddSuspiciousItemModifier(Optional.of(Holder.direct(new LootTableIdCondition.Builder(wisdomLoot.lootTables().getFirst()).build())), wisdomLoot.item(), wisdomLoot.weight(), wisdomLoot.totalWeight()));
-        }));
+            for (int i = 0; i < wisdomLoot.lootTables().size(); ++i) {
+                LootItemCondition.Builder[] builders = wisdomLoot.lootTables().stream()
+                        .map(LootTableIdCondition::builder)
+                        .toArray(LootItemCondition.Builder[]::new);
+                String lootName = wisdomLoot.lootTables().get(i).getPath();
+                this.add(wisdomLoot.lootTables().size() > 1 ? wisdomLoot.name().replaceAll("_[^_]*$", "_" + lootName.substring(lootName.lastIndexOf('/') + 1)) : wisdomLoot.name(), new AddSuspiciousItemModifier(Optional.of(Holder.direct(new LootTableIdCondition.Builder(wisdomLoot.lootTables().get(i)).build())), wisdomLoot.item(), wisdomLoot.weight(), wisdomLoot.totalWeight()));
+            }}));
     }
 
     public static class AddItemModifier extends LootModifier {

@@ -1,0 +1,9 @@
+{
+  "type": "forgottenengineers:add_item",
+  "condition": {
+    "type": "neoforge:loot_table_id",
+    "loot_table_id": "minecraft:chests/village/village_weaponsmith"
+  },
+  "item": "forgottenengineers:restoration_wisdom",
+  "weight": 4
+}
